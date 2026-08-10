@@ -23,7 +23,10 @@ ReactDOM.createRoot(
       <FavoriteProvider>
         <TripProvider>
           <WishlistProvider>
-             <App />
+            <BrowserRouter basename="/airbnb-clone">
+  <App />
+</BrowserRouter>
+            
           </WishlistProvider>
         </TripProvider>
       </FavoriteProvider>
