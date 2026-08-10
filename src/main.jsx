@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 
 import App from "./App.jsx";
 import "./index.css";
-
+import { BrowserRouter } from "react-router-dom";
 import { SearchProvider } from "./context/SearchContext";
 import { CategoryProvider } from "./context/CategoryContext";
 import { FavoriteProvider } from "./context/FavoriteContext";
