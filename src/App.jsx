@@ -1,9 +1,7 @@
 import {
-  BrowserRouter,
   Routes,
   Route
 } from "react-router-dom";
-
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -18,13 +16,9 @@ import Trips from "./pages/Trips";
 import Wishlists from "./pages/Wishlists";
 import HelpCenter from "./pages/HelpCenter";
 
-
-function App(){
-
-  return(
-
-    <BrowserRouter>
-
+function App() {
+  return (
+    <>
       <Navbar />
 
       <Routes>
@@ -34,12 +28,10 @@ function App(){
           element={<Home />}
         />
 
-
         <Route
           path="/explore"
           element={<Explore />}
         />
-
 
         <Route
           path="/listing/:id"
@@ -49,44 +41,38 @@ function App(){
         <Route
           path="/favorites"
           element={<Favorites />}
-        />  
+        />
 
-         <Route
-  path="/login"
-  element={<Login />}
-/>
+        <Route
+          path="/login"
+          element={<Login />}
+        />
 
-<Route
-  path="/signup"
-  element={<Signup />}
-/>
+        <Route
+          path="/signup"
+          element={<Signup />}
+        />
 
-<Route
-    path="/trips"
-    element={<Trips />}
-/>
+        <Route
+          path="/trips"
+          element={<Trips />}
+        />
 
-<Route
-  path="/wishlists"
-  element={<Wishlists />}
-/>
+        <Route
+          path="/wishlists"
+          element={<Wishlists />}
+        />
 
-<Route
-  path="/help"
-  element={<HelpCenter />}
-/>
+        <Route
+          path="/help"
+          element={<HelpCenter />}
+        />
 
       </Routes>
+
       <Footer />
-
-     
-
-
-    </BrowserRouter>
-
+    </>
   );
-
 }
-
 
 export default App;
