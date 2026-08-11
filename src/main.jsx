@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
+import { Toaster } from "sonner";
 import App from "./App.jsx";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
@@ -24,8 +24,9 @@ ReactDOM.createRoot(
         <TripProvider>
           <WishlistProvider>
             <BrowserRouter basename="/airbnb-clone">
-  <App />
-</BrowserRouter>
+              <App />
+              <Toaster position="top-center" />
+            </BrowserRouter>
             
           </WishlistProvider>
         </TripProvider>
