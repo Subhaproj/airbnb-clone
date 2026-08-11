@@ -4,15 +4,13 @@ import { Link } from "react-router-dom";
 import {
   Heart,
   Plus,
-  Trash2,
-  ChevronDown,
-  ChevronUp
+  
 } from "lucide-react";
 
 import { WishlistContext } from "../context/WishlistContext";
 import { AuthContext } from "../context/AuthContext";
-import PropertyCard from "../components/PropertyCard";
 
+import WishlistCard from "../components/WishlistCard";
 
 function Wishlists() {
 
@@ -116,8 +114,14 @@ const handleDelete = (wishlistId) => {
       },
 
       cancel: {
-        label: "Cancel"
-      }
+        label: "Cancel",
+
+        onClick: () => {
+          toast.dismiss();
+        }
+
+      },
+      duration: 10000
     }
   );
 
@@ -412,269 +416,21 @@ const handleDelete = (wishlistId) => {
           "
         >
 
-          {wishlists.map(
-            (wishlist) => {
+          {wishlists.map((wishlist) => (
 
-              const isOpen =
-                openWishlist ===
-                wishlist.id;
+  <WishlistCard
+    key={wishlist.id}
+    wishlist={wishlist}
+    isOpen={openWishlist === wishlist.id}
+    onToggle={() =>
+      handleToggleWishlist(wishlist.id)
+    }
+    onDelete={() =>
+      handleDelete(wishlist.id)
+    }
+  />
 
-
-              return (
-
-                <div
-                  key={wishlist.id}
-                  className="
-                    border
-                    rounded-2xl
-                    bg-white
-                    overflow-hidden
-                    shadow-sm
-                  "
-                >
-
-                  {/* ==========================
-                      Wishlist Header
-                  ========================== */}
-
-                  <div
-                    className="
-                      flex
-                      items-center
-                      justify-between
-                      p-6
-                      cursor-pointer
-                      hover:bg-gray-50
-                      transition
-                    "
-                    onClick={() =>
-                      handleToggleWishlist(
-                        wishlist.id
-                      )
-                    }
-                  >
-
-                    <div
-                      className="
-                        flex
-                        items-center
-                        gap-4
-                      "
-                    >
-
-                      <div
-                        className="
-                          w-12
-                          h-12
-                          rounded-full
-                          bg-red-50
-                          flex
-                          items-center
-                          justify-center
-                        "
-                      >
-
-                        <Heart
-                          size={25}
-                          className="
-                            text-red-500
-                          "
-                          fill="none"
-                        />
-
-                      </div>
-
-
-                      <div>
-
-                        <h2
-                          className="
-                            text-xl
-                            font-semibold
-                          "
-                        >
-                          {wishlist.name}
-                        </h2>
-
-
-                        <p
-                          className="
-                            text-gray-500
-                            mt-1
-                          "
-                        >
-                          {wishlist.properties.length}{" "}
-                          {wishlist.properties.length === 1
-                            ? "stay"
-                            : "stays"
-                          }
-                        </p>
-
-                      </div>
-
-                    </div>
-
-
-                    <div
-                      className="
-                        flex
-                        items-center
-                        gap-4
-                      "
-                    >
-
-                      <button
-                        type="button"
-                        onClick={(e) => {
-
-                          e.stopPropagation();
-
-                          handleDelete(
-                            wishlist.id
-                          );
-
-                        }}
-                        aria-label={
-                          `Delete ${wishlist.name}`
-                        }
-                        className="
-                          text-gray-400
-                          hover:text-red-500
-                          transition
-                        "
-                      >
-
-                        <Trash2
-                          size={19}
-                        />
-
-                      </button>
-
-
-                      {isOpen ? (
-
-                        <ChevronUp
-                          size={22}
-                        />
-
-                      ) : (
-
-                        <ChevronDown
-                          size={22}
-                        />
-
-                      )}
-
-                    </div>
-
-                  </div>
-
-
-                  {/* ==========================
-                      Properties
-                  ========================== */}
-
-                  {isOpen && (
-
-                    <div
-                      className="
-                        border-t
-                        px-6
-                        py-6
-                      "
-                    >
-
-                      {wishlist.properties.length === 0 ? (
-
-                        <div
-                          className="
-                            text-center
-                            py-10
-                          "
-                        >
-
-                          <Heart
-                            size={35}
-                            className="
-                              mx-auto
-                              text-gray-300
-                              mb-3
-                            "
-                          />
-
-
-                          <p
-                            className="
-                              text-gray-500
-                            "
-                          >
-                            No stays saved
-                            in this wishlist yet.
-                          </p>
-
-
-                          <Link
-                            to="/"
-                            className="
-                              inline-block
-                              mt-4
-                              bg-red-500
-                              text-white
-                              px-5
-                              py-2
-                              rounded-lg
-                              font-semibold
-                              hover:bg-red-600
-                              transition
-                            "
-                          >
-                            Explore stays
-                          </Link>
-
-                        </div>
-
-                      ) : (
-
-                        <div
-                          className="
-                            grid
-                            grid-cols-1
-                            sm:grid-cols-2
-                            lg:grid-cols-3
-                            xl:grid-cols-4
-                            gap-6
-                          "
-                        >
-
-                          {wishlist.properties.map(
-                            (property) => (
-
-                              <PropertyCard
-                                key={
-                                  property.id
-                                }
-                                property={
-                                  property
-                                }
-                              />
-
-                            )
-                          )}
-
-                        </div>
-
-                      )}
-
-                    </div>
-
-                  )}
-
-                </div>
-
-              );
-
-            }
-          )}
+))}
 
         </div>
 
