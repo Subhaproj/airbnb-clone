@@ -2,7 +2,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import properties from "../data/properties";
 import { Star, Heart } from "lucide-react";
-
+import { toast } from "sonner";
 import { useContext, useState } from "react";
 import { FavoriteContext } from "../context/FavoriteContext";
 import { TripContext } from "../context/TripContext";
@@ -151,35 +151,35 @@ const maximumGuests =
 
     // Check authentication first
     if (!currentUser) {
-      alert("Please log in to reserve a stay.");
+      toast.error("Please log in to reserve a stay.");
       navigate("/login");
       return;
     }
 
     // Check dates
     if (!checkIn || !checkOut) {
-      alert("Please select check-in and check-out dates.");
+      toast.error("Please select check-in and check-out dates.");
       return;
     }
 
     // Check date order
     if (checkOut <= checkIn) {
-      alert("Check-out must be after check-in.");
+      toast.error("Check-out must be after check-in.");
       return;
     }
 
     if (!guestName.trim()) {
-  alert("Please enter the guest name.");
+  toast.error("Please enter the guest name.");
   return;
 }
 
 if (!guestPhone.trim()) {
-  alert("Please enter the guest phone number.");
+  toast.error("Please enter the guest phone number.");
   return;
 }
 
 if (!/^[0-9]{10}$/.test(guestPhone)) {
-  alert("Please enter a valid 10-digit phone number.");
+  toast.error("Please enter a valid 10-digit phone number.");
   return;
 }
 
@@ -216,7 +216,7 @@ if (!/^[0-9]{10}$/.test(guestPhone)) {
 
     // Booking failed
     if (!result.success) {
-      alert(result.message);
+      toast.error(result.message);
       return;
     }
 

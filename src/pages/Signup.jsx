@@ -1,3 +1,4 @@
+import { toast } from "sonner";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
@@ -14,7 +15,15 @@ const [email, setEmail] = useState("");
 
 const [password, setPassword] = useState("");
 
-const handleSignup = (e) => { e.preventDefault(); if (!name || !email || !password) { alert("Please fill all fields"); return; } const success = signup({ name, email, password }); if (success) { alert("Account created successfully!"); navigate("/"); } else { alert("An account with this email already exists."); } };
+const handleSignup = (e) => { e.preventDefault(); if (!name || !email || !password) 
+  { toast.error("Please fill all fields"); 
+    return; }
+     const success = signup({ name, email, password }); 
+     if (success) { 
+      toast.success("Account created successfully!"); 
+      navigate("/"); } 
+      else { 
+        toast.error("An account with this email already exists."); } };
 
   return (
 

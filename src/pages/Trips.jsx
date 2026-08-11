@@ -1,10 +1,19 @@
-
-import { useContext } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { toast } from "sonner";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { TripContext } from "../context/TripContext";
 
 function Trips() {
   const { trips, cancelTrip } = useContext(TripContext);
+  const [tripToCancel, setTripToCancel] = useState(null);
 
   return (
     <div className="min-h-screen px-6 md:px-10 py-10">
@@ -18,6 +27,70 @@ function Trips() {
       <p className="mt-2 text-gray-500">
         Your upcoming and past trips will appear here.
       </p>
+      <Dialog
+  open={!!tripToCancel}
+  onOpenChange={(open) => {
+    if (!open) {
+      setTripToCancel(null);
+    }
+  }}
+>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>
+        Cancel reservation?
+      </DialogTitle>
+
+      <DialogDescription>
+        Are you sure you want to cancel your
+        reservation at{" "}
+        <span className="font-semibold">
+          {tripToCancel?.title}
+        </span>
+        ?
+      </DialogDescription>
+    </DialogHeader>
+
+    <DialogFooter>
+      <button
+        onClick={() => setTripToCancel(null)}
+        className="
+          border
+          px-4
+          py-2
+          rounded-lg
+          font-medium
+          hover:bg-gray-100
+        "
+      >
+        Keep reservation
+      </button>
+
+      <button
+        onClick={() => {
+  if (!tripToCancel) return;
+
+  cancelTrip(tripToCancel.bookingId);
+
+  toast.success("Reservation cancelled successfully.");
+
+  setTripToCancel(null);
+}}
+        className="
+          bg-red-500
+          text-white
+          px-4
+          py-2
+          rounded-lg
+          font-medium
+          hover:bg-red-600
+        "
+      >
+        Cancel reservation
+      </button>
+    </DialogFooter>
+  </DialogContent>
+</Dialog>
 
 
       {/* No trips */}
@@ -478,18 +551,8 @@ function Trips() {
                 {/* Cancel reservation */}
 
                 <button
-                  onClick={() => {
-
-                    const confirmed = window.confirm(
-                      "Are you sure you want to cancel this reservation?"
-                    );
-
-                    if (!confirmed) {
-                      return;
-                    }
-
-                    cancelTrip(trip.bookingId);
-                  }}
+                onClick={() => setTripToCancel(trip)}
+                  
                   className="
                     block
                     w-full

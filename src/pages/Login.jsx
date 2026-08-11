@@ -1,3 +1,4 @@
+import { toast } from "sonner";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
@@ -12,7 +13,13 @@ const [email, setEmail] = useState("");
 
 const [password, setPassword] = useState("");
 
-const handleLogin = (e) => { e.preventDefault(); const success = login(email, password); if (success) { alert("Login successful!"); navigate("/"); } else { alert("Invalid email or password."); } };
+const handleLogin = (e) => { e.preventDefault(); const success = login(email, password); 
+  if (success) { 
+    toast.success("Login successful!"); 
+    navigate("/"); 
+  } 
+  else 
+    { toast.error("Invalid email or password."); } };
 
   return (
 

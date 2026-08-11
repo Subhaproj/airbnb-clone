@@ -1,4 +1,4 @@
-
+import { toast } from "sonner";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -49,7 +49,7 @@ function Wishlists() {
 
     if (!currentUser) {
 
-      alert(
+      toast.error(
         "Please log in to create a wishlist."
       );
 
@@ -60,7 +60,7 @@ function Wishlists() {
 
     if (!wishlistName.trim()) {
 
-      alert(
+      toast.error(
         "Please enter a wishlist name."
       );
 
@@ -84,40 +84,46 @@ function Wishlists() {
   };
 
 
-  // ==========================
-  // Delete wishlist
-  // ==========================
+// ==========================
+// Delete wishlist
+// ==========================
 
-  const handleDelete = (
-    wishlistId
-  ) => {
+const handleDelete = (wishlistId) => {
 
-    const confirmDelete =
-      window.confirm(
-        "Are you sure you want to delete this wishlist?"
-      );
+  toast(
+    "Delete this wishlist?",
+    {
+      description:
+        "All saved stays in this wishlist will be removed.",
 
+      action: {
+        label: "Delete",
 
-    if (confirmDelete) {
+        onClick: () => {
 
-      deleteWishlist(
-        wishlistId
-      );
+          deleteWishlist(wishlistId);
 
+          // Close it if currently open
+          if (openWishlist === wishlistId) {
+            setOpenWishlist(null);
+          }
 
-      // Close it if currently open
+          toast.success(
+            "Wishlist deleted successfully."
+          );
 
-      if (
-        openWishlist === wishlistId
-      ) {
+        }
+      },
 
-        setOpenWishlist(null);
-
+      cancel: {
+        label: "Cancel"
       }
-
     }
+  );
 
-  };
+};
+
+
 
 
   // ==========================
