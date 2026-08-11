@@ -121,7 +121,7 @@ const handleDelete = (wishlistId) => {
         }
 
       },
-      duration: 10000
+      
     }
   );
 
