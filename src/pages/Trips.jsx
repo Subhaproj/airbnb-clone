@@ -1,17 +1,12 @@
+
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { TripContext } from "../context/TripContext";
 
-
 function Trips() {
-
   const { trips, cancelTrip } = useContext(TripContext);
 
- 
-
-
   return (
-
     <div className="min-h-screen px-6 md:px-10 py-10">
 
       {/* Page title */}
@@ -29,16 +24,18 @@ function Trips() {
 
       {trips.length === 0 ? (
 
-        <div className="
-          mt-10
-          mx-auto
-          border
-          rounded-2xl
-          p-10
-          text-center
-          w-[90%]
-          max-w-2xl
-        ">
+        <div
+          className="
+            mt-10
+            mx-auto
+            border
+            rounded-2xl
+            p-10
+            text-center
+            w-[90%]
+            max-w-2xl
+          "
+        >
 
           <h2 className="text-xl font-semibold">
             No trips yet
@@ -72,19 +69,21 @@ function Trips() {
 
         /* Trips */
 
-        <div className="
-          grid
-          grid-cols-1
-          sm:grid-cols-2
-          lg:grid-cols-3
-          gap-6
-          mt-10
-        ">
+        <div
+          className="
+            grid
+            grid-cols-1
+            sm:grid-cols-2
+            lg:grid-cols-3
+            gap-6
+            mt-10
+          "
+        >
 
           {trips.map((trip, index) => (
 
             <div
-              key={`${trip.id}-${index}`}
+              key={`${trip.id}-${trip.bookingId || index}`}
               className="
                 border
                 rounded-2xl
@@ -126,14 +125,16 @@ function Trips() {
 
                 <div className="mt-4">
 
-                  <span className="
-                    text-sm
-                    bg-green-100
-                    text-green-700
-                    px-3
-                    py-1
-                    rounded-full
-                  ">
+                  <span
+                    className="
+                      text-sm
+                      bg-green-100
+                      text-green-700
+                      px-3
+                      py-1
+                      rounded-full
+                    "
+                  >
                     Reserved
                   </span>
 
@@ -142,13 +143,17 @@ function Trips() {
 
                 {/* Booking details */}
 
-                <div className="
-                  mt-5
-                  border-t
-                  pt-4
-                  space-y-3
-                  text-sm
-                ">
+                <div
+                  className="
+                    mt-5
+                    border-t
+                    pt-4
+                    space-y-3
+                    text-sm
+                  "
+                >
+
+                  {/* Check-in */}
 
                   <div className="flex justify-between">
 
@@ -163,6 +168,8 @@ function Trips() {
                   </div>
 
 
+                  {/* Check-out */}
+
                   <div className="flex justify-between">
 
                     <span className="text-gray-500">
@@ -176,81 +183,276 @@ function Trips() {
                   </div>
 
 
+                  {/* Guests */}
+
                   <div className="flex justify-between">
 
-  <span className="text-gray-500">
-    Guests
-  </span>
+                    <span className="text-gray-500">
+                      Guests
+                    </span>
 
-  <span className="font-medium text-right">
+                    <span className="font-medium text-right">
 
-    {trip.totalGuests}{" "}
-    {trip.totalGuests === 1 ? "Guest" : "Guests"}
+                      {trip.totalGuests}{" "}
+                      {trip.totalGuests === 1
+                        ? "Guest"
+                        : "Guests"}
 
-    {trip.guests?.infants > 0 && (
-      <>
-        {" · "}
-        {trip.guests.infants}{" "}
-        {trip.guests.infants === 1
-          ? "Infant"
-          : "Infants"}
-      </>
-    )}
+                      {trip.guests?.infants > 0 && (
+                        <>
+                          {" · "}
+                          {trip.guests.infants}{" "}
+                          {trip.guests.infants === 1
+                            ? "Infant"
+                            : "Infants"}
+                        </>
+                      )}
 
-    {trip.guests?.pets > 0 && (
-      <>
-        {" · "}
-        {trip.guests.pets}{" "}
-        {trip.guests.pets === 1
-          ? "Pet"
-          : "Pets"}
-      </>
-    )}
+                      {trip.guests?.pets > 0 && (
+                        <>
+                          {" · "}
+                          {trip.guests.pets}{" "}
+                          {trip.guests.pets === 1
+                            ? "Pet"
+                            : "Pets"}
+                        </>
+                      )}
 
-  </span>
+                    </span>
 
-</div>
+                  </div>
+
+
+                  {/* Nights */}
+
+                  <div className="flex justify-between">
+
+                    <span className="text-gray-500">
+                      Nights
+                    </span>
+
+                    <span className="font-medium">
+                      {trip.nights}
+                    </span>
+
+                  </div>
 
                 </div>
 
 
-                {/* Price */}
+                {/* Guest details */}
 
-                <div className="mt-4 space-y-2">
+                <div
+                  className="
+                    mt-5
+                    border-t
+                    pt-4
+                    space-y-3
+                    text-sm
+                  "
+                >
 
-  <p>
-    <span className="font-medium">Check-in:</span>{" "}
-    {trip.checkIn}
-  </p>
+                  <h3 className="font-semibold text-base">
+                    Guest details
+                  </h3>
 
-  <p>
-    <span className="font-medium">Check-out:</span>{" "}
-    {trip.checkOut}
-  </p>
 
-  <p>
-    <span className="font-medium">Guests:</span>{" "}
-    {trip.totalGuests} Guests
-  </p>
+                  {/* Booking for */}
 
-  <p>
-    <span className="font-medium">Nights:</span>{" "}
-    {trip.nights}
-  </p>
+                  <div className="flex justify-between">
 
-</div>
+                    <span className="text-gray-500">
+                      Booking for
+                    </span>
 
-<div className="mt-4 border-t pt-4">
+                    <span className="font-medium">
+                      {trip.bookingFor === "self"
+                        ? "Myself"
+                        : "Someone else"}
+                    </span>
 
-  <p className="text-sm text-gray-500">
-    ₹{trip.price} × {trip.nights} nights
-  </p>
+                  </div>
 
-  <p className="text-xl font-bold mt-1">
-    Total: ₹{trip.totalPrice.toLocaleString("en-IN")}
-  </p>
 
-</div>
+                  {/* Guest name */}
+
+                  <div className="flex justify-between gap-4">
+
+                    <span className="text-gray-500">
+                      Guest name
+                    </span>
+
+                    <span className="font-medium text-right">
+                      {trip.guestName || "Not provided"}
+                    </span>
+
+                  </div>
+
+
+                  {/* Guest phone */}
+
+                  <div className="flex justify-between gap-4">
+
+                    <span className="text-gray-500">
+                      Phone
+                    </span>
+
+                    <span className="font-medium text-right">
+                      {trip.guestPhone || "Not provided"}
+                    </span>
+
+                  </div>
+
+                </div>
+
+
+                {/* Price breakdown */}
+
+                <div
+                  className="
+                    mt-5
+                    border-t
+                    pt-4
+                    space-y-3
+                    text-sm
+                  "
+                >
+
+                  {/* Room price */}
+
+                  <div className="flex justify-between">
+
+                    <span>
+                      ₹{trip.pricePerNight?.toLocaleString("en-IN")}
+                      {" × "}
+                      {trip.nights}{" "}
+                      {trip.nights === 1
+                        ? "night"
+                        : "nights"}
+                    </span>
+
+                    <span>
+                      ₹{trip.roomTotal?.toLocaleString("en-IN")}
+                    </span>
+
+                  </div>
+
+
+                  {/* Extra guest fee */}
+
+                  {trip.extraGuestFee > 0 && (
+
+                    <div className="flex justify-between">
+
+                      <span>
+                        Extra guest fee
+                      </span>
+
+                      <span>
+                        ₹{trip.extraGuestFee.toLocaleString("en-IN")}
+                      </span>
+
+                    </div>
+
+                  )}
+
+
+                  {/* Stay subtotal */}
+
+                  <div className="flex justify-between">
+
+                    <span>
+                      Stay subtotal
+                    </span>
+
+                    <span>
+                      ₹{trip.staySubtotal?.toLocaleString("en-IN")}
+                    </span>
+
+                  </div>
+
+
+                  {/* Service fee */}
+
+                  <div className="flex justify-between">
+
+                    <span>
+                      Service fee (10%)
+                    </span>
+
+                    <span>
+                      ₹{trip.serviceFee?.toLocaleString("en-IN")}
+                    </span>
+
+                  </div>
+
+
+                  {/* Tax */}
+
+                  <div className="flex justify-between">
+
+                    <span>
+                      Tax (5%)
+                    </span>
+
+                    <span>
+                      ₹{trip.tax?.toLocaleString("en-IN")}
+                    </span>
+
+                  </div>
+
+
+                  {/* Total */}
+
+                  <div
+                    className="
+                      flex
+                      justify-between
+                      border-t
+                      pt-4
+                      mt-4
+                      text-lg
+                      font-bold
+                    "
+                  >
+
+                    <span>
+                      Total
+                    </span>
+
+                    <span>
+                      ₹{trip.totalPrice?.toLocaleString("en-IN")}
+                    </span>
+
+                  </div>
+
+                </div>
+
+
+                {/* Guest message */}
+
+                {trip.message?.trim() && (
+
+                  <div
+                    className="
+                      mt-5
+                      bg-gray-50
+                      rounded-xl
+                      p-4
+                    "
+                  >
+
+                    <p className="text-sm font-semibold">
+                      Message to host
+                    </p>
+
+                    <p className="text-sm text-gray-600 mt-2">
+                      "{trip.message}"
+                    </p>
+
+                  </div>
+
+                )}
 
 
                 {/* View property */}
@@ -272,38 +474,38 @@ function Trips() {
                   View property
                 </Link>
 
+
+                {/* Cancel reservation */}
+
                 <button
-  onClick={() => {
+                  onClick={() => {
 
-    const confirmed = window.confirm(
-      "Are you sure you want to cancel this reservation?"
-    );
+                    const confirmed = window.confirm(
+                      "Are you sure you want to cancel this reservation?"
+                    );
 
-    if (!confirmed) {
-      return;
-    }
+                    if (!confirmed) {
+                      return;
+                    }
 
-    cancelTrip(
-      trip.bookingId
-    );
-
-  }}
-  className="
-    block
-    w-full
-    mt-3
-    border
-    border-red-500
-    text-red-500
-    py-2
-    rounded-lg
-    font-medium
-    hover:bg-red-50
-    transition
-  "
->
-  Cancel reservation
-</button>
+                    cancelTrip(trip.bookingId);
+                  }}
+                  className="
+                    block
+                    w-full
+                    mt-3
+                    border
+                    border-red-500
+                    text-red-500
+                    py-2
+                    rounded-lg
+                    font-medium
+                    hover:bg-red-50
+                    transition
+                  "
+                >
+                  Cancel reservation
+                </button>
 
               </div>
 
@@ -316,10 +518,8 @@ function Trips() {
       )}
 
     </div>
-
   );
-
 }
 
-
 export default Trips;
+
