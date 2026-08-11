@@ -1,9 +1,18 @@
-
+import { toast } from "sonner";
 import {
   Heart,
   Star,
   Plus
 } from "lucide-react";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog";
 
 import {
   useNavigate
@@ -70,6 +79,11 @@ function PropertyCard({ property }) {
     setWishlistOpen
   ] = useState(false);
 
+  const [
+  showRemoveConfirm,
+  setShowRemoveConfirm
+] = useState(false);
+
 
   const wishlistRef =
     useRef(null);
@@ -93,7 +107,7 @@ function PropertyCard({ property }) {
 
     if (!success) {
 
-      alert(
+      toast.error(
         "Please log in to save properties to your Favorites."
       );
 
@@ -138,7 +152,7 @@ const handleWishlistClick = (e) => {
 
   if (!currentUser) {
 
-    alert(
+    toast.error(
       "Please log in to save properties to your wishlist."
     );
 
@@ -146,43 +160,17 @@ const handleWishlistClick = (e) => {
   }
 
   // If property is already in a wishlist
-  if (isWishlisted) {
+   if (isWishlisted) {
 
-    const confirmRemove = window.confirm(
-      "This property is already in your wishlist. Do you want to remove it?"
-    );
+  setShowRemoveConfirm(true);
 
-    if (confirmRemove) {
-
-      wishlists.forEach((wishlist) => {
-
-        const alreadySaved =
-          wishlist.properties.some(
-            (item) => item.id === property.id
-          );
-
-        if (alreadySaved) {
-
-          removeFromWishlist(
-            wishlist.id,
-            property.id
-          );
-
-        }
-
-      });
-
-      alert("Property removed from your wishlist.");
-
-    }
-
-    return;
-  }
+  return;
+}
 
   // No wishlist exists
   if (wishlists.length === 0) {
 
-    alert(
+    toast.error(
       "Please create a wishlist first."
     );
 
@@ -194,6 +182,32 @@ const handleWishlistClick = (e) => {
   // Open wishlist selector
   setWishlistOpen(
     (prev) => !prev
+  );
+};
+const handleRemoveFromWishlist = () => {
+
+  wishlists.forEach((wishlist) => {
+
+    const alreadySaved =
+      wishlist.properties.some(
+        (item) => item.id === property.id
+      );
+
+    if (alreadySaved) {
+
+      removeFromWishlist(
+        wishlist.id,
+        property.id
+      );
+
+    }
+
+  });
+
+  setShowRemoveConfirm(false);
+
+  toast.success(
+    "Property removed from your wishlist."
   );
 };
 
@@ -221,7 +235,7 @@ const handleWishlistClick = (e) => {
 
       setWishlistOpen(false);
 
-      alert(
+      toast.success(
         "Property added to wishlist!"
       );
 
@@ -272,6 +286,66 @@ const handleWishlistClick = (e) => {
 
 
   return (
+  <>
+    <Dialog
+      open={showRemoveConfirm}
+      onOpenChange={setShowRemoveConfirm}
+    >
+      <DialogContent>
+
+        <DialogHeader>
+
+          <DialogTitle>
+            Remove from wishlist?
+          </DialogTitle>
+
+          <DialogDescription>
+            This property is already saved to your
+            wishlist. Do you want to remove it?
+          </DialogDescription>
+
+        </DialogHeader>
+
+        <DialogFooter>
+
+          <button
+            type="button"
+            onClick={() =>
+              setShowRemoveConfirm(false)
+            }
+            className="
+              border
+              px-4
+              py-2
+              rounded-lg
+              font-medium
+              hover:bg-gray-100
+            "
+          >
+            Keep it
+          </button>
+
+          <button
+            type="button"
+            onClick={handleRemoveFromWishlist}
+            className="
+              bg-red-500
+              text-white
+              px-4
+              py-2
+              rounded-lg
+              font-medium
+              hover:bg-red-600
+            "
+          >
+            Remove
+          </button>
+
+        </DialogFooter>
+
+      </DialogContent>
+    </Dialog>
+
 
     <div
       className="
@@ -636,6 +710,7 @@ const handleWishlistClick = (e) => {
       </div>
 
     </div>
+    </>
 
   );
 
