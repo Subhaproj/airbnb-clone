@@ -4,16 +4,19 @@ import {
   Search,
   Home,
   Heart,
-  Star,
   CalendarDays,
   User,
-  Mail
+  Mail,
+  ChevronDown,
+  ChevronUp
 } from "lucide-react";
 
 function HelpCenter() {
 
   const [searchTerm, setSearchTerm] =
     useState("");
+
+  const [openQuestion, setOpenQuestion] = useState(null);  
 
 
   const helpTopics = [
@@ -45,24 +48,45 @@ function HelpCenter() {
 
 
   const commonQuestions = [
-    "How do I book a stay?",
-    "How do I add a property to Favorites?",
-    "How do I create a Wishlist?",
-    "How can I view my trips?",
-    "How do I cancel a booking?",
-    "How do I remove a property from Favorites?"
-  ];
+  {
+    question: "How do I book a stay?",
+    answer:
+      "Choose a property you like, select your check-in and check-out dates, choose the number of guests, and click Reserve. You must be logged in to complete a booking."
+  },
+  {
+    question: "How do I add a property to Favorites?",
+    answer:
+      "Open a property and click the star icon. The property will be added to your Favorites. You can view your saved properties from the Favorites page."
+  },
+  {
+    question: "How do I create a Wishlist?",
+    answer:
+      "Go to the Wishlists page and create a new wishlist. You can then add properties to that wishlist from a property card or listing details page."
+  },
+  {
+    question: "How can I view my trips?",
+    answer:
+      "Open the Trips page from the navigation menu. You will find your upcoming and previous bookings along with their booking details."
+  },
+  {
+    question: "How do I cancel a booking?",
+    answer:
+      "Go to the Trips page, find the booking you want to cancel, and use the cancellation option available for that booking."
+  },
+  {
+    question: "How do I remove a property from Favorites?",
+    answer:
+      "Open your Favorites page and click the star icon on the property you want to remove. The property will be removed from your Favorites."
+  }
+];
 
 
-  const filteredQuestions =
-    commonQuestions.filter(
-      (question) =>
-        question
-          .toLowerCase()
-          .includes(
-            searchTerm.toLowerCase()
-          )
-    );
+  const filteredQuestions = commonQuestions.filter(
+  (item) =>
+    item.question
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase())
+);
 
 
   return (
@@ -241,73 +265,150 @@ function HelpCenter() {
         </div>
 
 
+        
+
         {/* Common Questions */}
 
-        <section className="mt-12">
+<section className="mt-12">
 
-          <h2
-            className="
-              text-2xl
-              font-bold
-              mb-6
-            "
-          >
-            Common questions
-          </h2>
+  <h2
+    className="
+      text-2xl
+      font-bold
+      mb-6
+    "
+  >
+    Common questions
+  </h2>
 
+  <div
+    className="
+      bg-white
+      border
+      rounded-xl
+      overflow-hidden
+    "
+  >
+
+    {filteredQuestions.length > 0 ? (
+
+      filteredQuestions.map((item) => {
+
+        const isOpen =
+          openQuestion === item.question;
+
+        return (
 
           <div
-            className="
-              bg-white
-              border
-              rounded-xl
-              divide-y
-            "
+            key={item.question}
+            className="border-b last:border-b-0"
           >
 
-            {filteredQuestions.length >
-            0 ? (
+            {/* Question */}
 
-              filteredQuestions.map(
-                (question) => (
-
-                  <button
-                    key={question}
-                    type="button"
-                    className="
-                      w-full
-                      text-left
-                      px-5
-                      py-4
-                      hover:bg-gray-50
-                      transition
-                      text-sm
-                      font-medium
-                    "
-                  >
-                    {question}
-                  </button>
-
+            <button
+              type="button"
+              onClick={() =>
+                setOpenQuestion(
+                  isOpen
+                    ? null
+                    : item.question
                 )
-              )
+              }
+              className="
+                w-full
+                flex
+                items-center
+                justify-between
+                gap-4
+                text-left
+                px-5
+                py-5
+                hover:bg-gray-50
+                transition
+              "
+            >
 
-            ) : (
-
-              <p
+              <span
                 className="
-                  px-5
-                  py-6
-                  text-gray-500
+                  text-sm
+                  font-medium
+                  text-gray-800
                 "
               >
-                No help articles found.
-              </p>
+                {item.question}
+              </span>
+
+              {isOpen ? (
+                <ChevronUp
+                  size={20}
+                  className="
+                    text-gray-500
+                    flex-shrink-0
+                  "
+                />
+              ) : (
+                <ChevronDown
+                  size={20}
+                  className="
+                    text-gray-500
+                    flex-shrink-0
+                  "
+                />
+              )}
+
+            </button>
+
+
+            {/* Answer */}
+
+            {isOpen && (
+
+              <div
+                className="
+                  px-5
+                  pb-5
+                  pr-12
+                "
+              >
+
+                <p
+                  className="
+                    text-sm
+                    leading-6
+                    text-gray-500
+                  "
+                >
+                  {item.answer}
+                </p>
+
+              </div>
 
             )}
 
           </div>
 
-        </section>
+        );
+
+      })
+
+    ) : (
+
+      <p
+        className="
+          px-5
+          py-6
+          text-gray-500
+        "
+      >
+        No help articles found.
+      </p>
+
+    )}
+
+  </div>
+
+</section>
 
 
         {/* Contact Support */}
