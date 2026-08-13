@@ -940,6 +940,28 @@ useEffect(() => {
   ========================== */
 
   <>
+  <button
+      type="button"
+      onClick={() => {
+
+        setMenuOpen(false);
+
+        navigate("/favorites");
+
+      }}
+      className="
+      md:hidden
+        w-full
+        text-left
+        px-5
+        py-3
+        hover:bg-gray-100
+      "
+    >
+
+      Favorites ⭐
+
+    </button>
 
     {/* Log in */}
 
