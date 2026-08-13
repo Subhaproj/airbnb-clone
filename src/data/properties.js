@@ -84,7 +84,7 @@ const properties = [
     bedrooms: "6 bedrooms",
     beds: "7 beds",
     host: "Lee",
-    categories: ["Homes","Trending"]
+    categories: ["City","Trending"]
   },
     {
     id: 5,
