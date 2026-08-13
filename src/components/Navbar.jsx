@@ -32,6 +32,7 @@ import {
 } from "../context/CategoryContext";
 
 import GuestSelector from "./GuestSelector";
+import { useLocation } from "react-router-dom";
 
 
 // ==========================
@@ -48,6 +49,8 @@ const avatarColors = [
   "bg-teal-500",
   "bg-indigo-500",
 ];
+
+
 
 
 // ==========================
@@ -108,6 +111,10 @@ function getInitial(user) {
 // ==========================
 
 function Navbar() {
+
+  const location = useLocation();
+
+const isHelpPage = location.pathname === "/help";
 
   // ==========================
   // Search Context
@@ -331,137 +338,133 @@ function Navbar() {
         {/* ==========================
             Desktop Search
         ========================== */}
+      
+        {!isHelpPage && (
 
-        <div
-          className="
-            hidden
-            md:flex
-            items-center
-            border
-            rounded-full
-            shadow-sm
-            hover:shadow-md
-            transition
-            px-4
-            py-2
-            flex-1
-            max-w-2xl
-          "
-        >
+  <div
+    className="
+      hidden
+      md:flex
+      items-center
+      border
+      rounded-full
+      shadow-sm
+      hover:shadow-md
+      transition
+      px-4
+      py-2
+      flex-1
+      max-w-2xl
+    "
+  >
 
-          {/* Search places */}
+    {/* Search places */}
 
-          <input
-            type="text"
-            value={searchTerm}
-            onChange={(e) =>
-              setSearchTerm(
-                e.target.value
-              )
-            }
-            onKeyDown={(e) => {
+    <input
+      type="text"
+      value={searchTerm}
+      onChange={(e) =>
+        setSearchTerm(e.target.value)
+      }
+      onKeyDown={(e) => {
 
-              if (e.key === "Enter") {
+        if (e.key === "Enter") {
+          handleSearch();
+        }
 
-                handleSearch();
-
-              }
-
-            }}
-            placeholder="Search places"
-            className="
-              outline-none
-              text-sm
-              font-semibold
-              w-full
-              min-w-0
-            "
-            aria-label="Search places"
-          />
+      }}
+      placeholder="Search places"
+      className="
+        outline-none
+        text-sm
+        font-semibold
+        w-full
+        min-w-0
+      "
+      aria-label="Search places"
+    />
 
 
-          {/* Guests */}
+    {/* Guests */}
 
-          <div
-            ref={guestRef}
-            className="
-              relative
-              border-l
-              px-4
-            "
-          >
+    <div
+      ref={guestRef}
+      className="
+        relative
+        border-l
+        px-4
+      "
+    >
 
-            <button
-              type="button"
-              onClick={() => {
+      <button
+        type="button"
+        onClick={() => {
 
-                setGuestOpen(
-                  (prev) => !prev
-                );
+          setGuestOpen(
+            (prev) => !prev
+          );
 
-                setGlobeOpen(false);
+          setGlobeOpen(false);
+          setMenuOpen(false);
 
-                setMenuOpen(false);
+        }}
+        className="
+          text-sm
+          font-semibold
+          whitespace-nowrap
+        "
+      >
 
-              }}
-              className="
-                text-sm
-                font-semibold
-                whitespace-nowrap
-              "
-            >
+        {guestCount === 1
+          ? "Add guests"
+          : `${guestCount} guests`
+        }
 
-              {guestCount === 1
-                ? "Add guests"
-                : `${guestCount} guests`}
-
-            </button>
-
-
-            {/* Guest Selector */}
-
-            {guestOpen && (
-
-              <GuestSelector />
-
-            )}
-
-          </div>
+      </button>
 
 
-          {/* Search button */}
+      {guestOpen && (
+        <GuestSelector />
+      )}
 
-          <button
-            type="button"
-            onClick={handleSearch}
-            aria-label="Search"
-            className="
-              bg-red-500
-              text-white
-              rounded-full
-              p-3
-              ml-2
-              flex
-              items-center
-              justify-center
-              shrink-0
-              hover:scale-105
-              active:scale-95
-              transition-transform
-            "
-          >
+    </div>
 
-            <Search size={18} />
 
-          </button>
+    {/* Search button */}
 
-        </div>
+    <button
+      type="button"
+      onClick={handleSearch}
+      aria-label="Search"
+      className="
+        bg-red-500
+        text-white
+        rounded-full
+        p-3
+        ml-2
+        flex
+        items-center
+        justify-center
+        shrink-0
+        hover:scale-105
+        active:scale-95
+        transition-transform
+      "
+    >
+
+      <Search size={18} />
+
+    </button>
+
+  </div>
+
+)}
 
 
         {/* ==========================
             Mobile / Tablet Search
         ========================== */}
-
+      {!isHelpPage &&(
         <div
           className="
             flex
@@ -509,6 +512,7 @@ function Navbar() {
           />
 
         </div>
+        )}
 
 
         {/* ==========================
