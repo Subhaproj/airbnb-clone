@@ -1,29 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      const path = window.location.pathname;
 
-  <script>
-    const path = window.location.pathname;
+      sessionStorage.redirect = path +
+        window.location.search +
+        window.location.hash;
 
-    const repo = "/airbnb-clone";
+      window.location.replace(
+        "/airbnb-clone/"
+      );
+    </script>
+  </head>
 
-    const relativePath = path.startsWith(repo)
-      ? path.slice(repo.length)
-      : path;
-
-    window.location.replace(
-      repo + "/?/" + relativePath +
-      window.location.search +
-      window.location.hash
-    );
-  </script>
-
-  <title>Airbnb Clone</title>
-</head>
-
-<body>
-  Redirecting...
-</body>
+  <body>
+  </body>
 </html>
