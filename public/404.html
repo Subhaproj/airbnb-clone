@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <script>
+    const path = window.location.pathname;
+
+    const repo = "/airbnb-clone";
+
+    const relativePath = path.startsWith(repo)
+      ? path.slice(repo.length)
+      : path;
+
+    window.location.replace(
+      repo + "/?/" + relativePath +
+      window.location.search +
+      window.location.hash
+    );
+  </script>
+
+  <title>Airbnb Clone</title>
+</head>
+
+<body>
+  Redirecting...
+</body>
+</html>
