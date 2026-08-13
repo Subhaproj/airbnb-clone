@@ -836,7 +836,7 @@ if (!/^[0-9]{10}$/.test(guestPhone)) {
                   </div>
 
 
-                  <p className="text-xs text-gray-500 mt-4">
+                  <p className="text-xs text-blue-500 mt-4">
   This property accommodates {propertyGuestCapacity} guests.
   You can add up to 2 extra guests.
 </p>
