@@ -11,7 +11,7 @@ import { WishlistContext } from "../context/WishlistContext";
 import { AuthContext } from "../context/AuthContext";
 
 import WishlistCard from "../components/WishlistCard";
-
+import { SearchContext } from "../context/SearchContext";
 function Wishlists() {
 
   const {
@@ -25,6 +25,10 @@ function Wishlists() {
     currentUser
   } = useContext(AuthContext);
 
+  const {
+  searchTerm
+} = useContext(SearchContext);
+
 
   const [
     wishlistName,
@@ -37,6 +41,10 @@ function Wishlists() {
     openWishlist,
     setOpenWishlist
   ] = useState(null);
+
+  
+
+
 
 
   // ==========================
@@ -146,6 +154,78 @@ const handleDelete = (wishlistId) => {
     );
 
   };
+
+  // =========================================
+// SEARCH WITHIN WISHLISTS ONLY
+// =========================================
+
+const search =
+  searchTerm.trim().toLowerCase();
+
+
+const filteredWishlists =
+  wishlists
+    .map((wishlist) => {
+
+      // No search → keep everything
+      if (!search) {
+        return wishlist;
+      }
+
+
+      const filteredProperties =
+        (wishlist.properties || []).filter(
+          (property) => {
+
+            return (
+
+              property.title
+                ?.toLowerCase()
+                .includes(search)
+
+              ||
+
+              property.location
+                ?.toLowerCase()
+                .includes(search)
+
+              ||
+
+              property.host
+                ?.toLowerCase()
+                .includes(search)
+
+              ||
+
+              property.categories?.some(
+                (category) =>
+                  category
+                    .toLowerCase()
+                    .includes(search)
+              )
+
+            );
+
+          }
+        );
+
+
+      return {
+        ...wishlist,
+        properties: filteredProperties
+      };
+
+    })
+    .filter((wishlist) => {
+
+      // When searching, hide empty wishlists
+      if (search) {
+        return wishlist.properties?.length > 0;
+      }
+
+      return true;
+
+    });
 
 
   return (
@@ -416,7 +496,7 @@ const handleDelete = (wishlistId) => {
           "
         >
 
-          {wishlists.map((wishlist) => (
+          {filteredWishlists.map((wishlist) => (
 
   <WishlistCard
     key={wishlist.id}
@@ -431,6 +511,8 @@ const handleDelete = (wishlistId) => {
   />
 
 ))}
+
+  
 
         </div>
 

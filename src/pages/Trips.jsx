@@ -119,7 +119,7 @@ function Trips() {
           </p>
 
           <Link
-            to="/"
+            to="/Explore"
             className="
               inline-block
               mt-6
