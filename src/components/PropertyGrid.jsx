@@ -1,73 +1,125 @@
 import properties from "../data/properties";
 import PropertyCard from "./PropertyCard";
+
 import { useContext } from "react";
+
 import { SearchContext } from "../context/SearchContext";
 import { CategoryContext } from "../context/CategoryContext";
+
 
 function PropertyGrid() {
 
   const {
-    searchTerm, guestCount,
+    searchTerm,
+    guestCount
   } = useContext(SearchContext);
+
 
   const {
     selectedCategory
   } = useContext(CategoryContext);
 
-  const filteredProperties =
-    properties.filter((property) => {
 
-      const searchMatch =
-        property.location
-          .toLowerCase()
-          .includes(searchTerm.toLowerCase()) ||
-        property.title
-          .toLowerCase()
-          .includes(searchTerm.toLowerCase());
+  const filteredProperties = properties.filter((property) => {
 
-      const categoryMatch =
-        selectedCategory === "" ||
-        (
-          Array.isArray(property.categories) &&
-          property.categories.includes(selectedCategory)
-        );
+    // ==========================
+    // SEARCH FILTER
+    // ==========================
 
-      const propertyGuestCapacity =
-      parseInt(property.guests, 10);
+    const search = searchTerm
+      .trim()
+      .toLowerCase();
+
+
+    const searchMatch =
+      search === "" ||
+      property.location
+        .toLowerCase()
+        .includes(search) ||
+      property.title
+        .toLowerCase()
+        .includes(search);
+
+
+    // ==========================
+    // CATEGORY FILTER
+    // ==========================
+
+    const categoryMatch =
+      selectedCategory === "" ||
+      (
+        Array.isArray(property.categories) &&
+        property.categories.includes(
+          selectedCategory
+        )
+      );
+
+
+    // ==========================
+    // GUEST FILTER
+    // ==========================
+
+    const propertyGuestCapacity =
+      Number(property.guests);
+
 
     const guestMatch =
-      propertyGuestCapacity >= guestCount;
+      propertyGuestCapacity >= Number(guestCount);
+
+
+    // ==========================
+    // FINAL FILTER
+    // ==========================
 
     return (
       searchMatch &&
       categoryMatch &&
       guestMatch
     );
-    });
+
+  });
 
 
   return (
-
     <div>
 
-      {/* Search Result Message */}
+      {/* ==========================
+          Search Result Message
+      ========================== */}
 
-      {searchTerm.trim() !== "" && (
+      {(searchTerm.trim() !== "" || guestCount > 1) && (
 
         <div className="px-4 md:px-8 pt-6">
 
           {filteredProperties.length > 0 ? (
 
             <p className="text-lg font-semibold">
+
               {filteredProperties.length}{" "}
+
               {filteredProperties.length === 1
                 ? "stay"
                 : "stays"
               }{" "}
-              found for{" "}
-              <span className="text-gray-500">
-                "{searchTerm}"
-              </span>
+
+              found
+
+              {searchTerm.trim() !== "" && (
+                <>
+                  {" "}for{" "}
+                  <span className="text-gray-500">
+                    "{searchTerm}"
+                  </span>
+                </>
+              )}
+
+              {guestCount > 1 && (
+                <>
+                  {" "}for{" "}
+                  {guestCount} guests
+                </>
+              )}
+
             </p>
 
           ) : (
@@ -79,11 +131,13 @@ function PropertyGrid() {
               </h2>
 
               <p className="text-gray-500 mt-1">
-                We couldn't find any stays matching{" "}
+
+                No stays are available for{" "}
+
                 <span className="font-medium">
-                  "{searchTerm}"
-                </span>
-                .
+                  {guestCount} guests
+                </span>.
+
               </p>
 
             </div>
@@ -95,10 +149,12 @@ function PropertyGrid() {
       )}
 
 
-      {/* Property Grid */}
+      {/* ==========================
+          PROPERTY GRID
+      ========================== */}
 
       <div
-      id="property-results"
+        id="property-results"
         className="
           grid
           grid-cols-1
@@ -124,8 +180,8 @@ function PropertyGrid() {
       </div>
 
     </div>
-
   );
 }
+
 
 export default PropertyGrid;

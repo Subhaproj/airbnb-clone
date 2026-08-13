@@ -34,6 +34,8 @@ import {
 import GuestSelector from "./GuestSelector";
 import { useLocation } from "react-router-dom";
 
+;
+
 
 // ==========================
 // Avatar colors
@@ -123,7 +125,8 @@ const isHelpPage = location.pathname === "/help";
   const {
     searchTerm,
     setSearchTerm,
-    guestCount
+    guestCount,
+    setGuestCount
   } = useContext(SearchContext);
 
 
@@ -192,29 +195,37 @@ const isHelpPage = location.pathname === "/help";
   // Search
   // ==========================
 
-  const handleSearch = () => {
+ const handleSearch = () => {
 
-    // Clear category so search
-    // works across all categories
+  setSelectedCategory("");
 
-    setSelectedCategory("");
+  const path = location.pathname;
 
+  // Home → Explore
+  if (path === "/") {
+    navigate("/explore");
+    return;
+  }
 
-    const results =
-      document.getElementById(
-        "property-results"
-      );
+  // Explore → stay on Explore
+  if (path === "/explore") {
+    return;
+  }
 
-    if (results) {
+  // Favorites → stay on Favorites
+  if (path === "/favorites") {
+    return;
+  }
 
-      results.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
+  // Wishlists → stay on Wishlists
+  if (path === "/wishlists") {
+    return;
+  }
 
-    }
+  // Other pages → Explore
+  navigate("/explore");
 
-  };
+};
 
 
   // ==========================
@@ -223,6 +234,7 @@ const isHelpPage = location.pathname === "/help";
   // ==========================
 
   useEffect(() => {
+    
 
     function handleClickOutside(event) {
 
@@ -280,6 +292,11 @@ const isHelpPage = location.pathname === "/help";
     };
 
   }, []);
+  // Reset guest selection when navigating to another page
+useEffect(() => {
+  setGuestCount(1);
+  setGuestOpen(false);
+}, [location.pathname]);
 
 
   return (
@@ -424,8 +441,11 @@ const isHelpPage = location.pathname === "/help";
 
 
       {guestOpen && (
-        <GuestSelector />
-      )}
+  <GuestSelector
+    guestCount={guestCount}
+    setGuestCount={setGuestCount}
+  />
+)}
 
     </div>
 
@@ -768,6 +788,31 @@ const isHelpPage = location.pathname === "/help";
 
                   <>
 
+                    {/* Favorites */}
+
+    <button
+      type="button"
+      onClick={() => {
+
+        setMenuOpen(false);
+
+        navigate("/favorites");
+
+      }}
+      className="
+      md:hidden
+        w-full
+        text-left
+        px-5
+        py-3
+        hover:bg-gray-100
+      "
+    >
+
+      Favorites ⭐
+
+    </button>
+
                     {/* Wishlists */}
 
                     <button
@@ -817,7 +862,7 @@ const isHelpPage = location.pathname === "/help";
                       "
                     >
 
-                      Trips
+                      Trips 🚗
 
                     </button>
 
@@ -848,7 +893,7 @@ const isHelpPage = location.pathname === "/help";
                   "
                 >
 
-                  Help Center
+                  Help Center 📞
 
                 </button>
 
@@ -884,7 +929,7 @@ const isHelpPage = location.pathname === "/help";
     "
   >
 
-    Logout
+    Logout 
 
   </button>
 

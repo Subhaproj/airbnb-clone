@@ -1,7 +1,7 @@
-
 import { useState } from "react";
 
 function GuestSelector({ setGuestCount }) {
+
   const [guests, setGuests] = useState({
     adults: 1,
     children: 0,
@@ -9,28 +9,38 @@ function GuestSelector({ setGuestCount }) {
     pets: 0,
   });
 
+
   const updateGuest = (type, amount) => {
-    const currentValue = guests[type];
 
-    const newValue = Math.max(
-      type === "adults" ? 1 : 0,
-      currentValue + amount
-    );
+    setGuests((prev) => {
 
-    const updatedGuests = {
-      ...guests,
-      [type]: newValue,
-    };
+      const newValue = Math.max(
+        type === "adults" ? 1 : 0,
+        prev[type] + amount
+      );
 
-    setGuests(updatedGuests);
+      const updatedGuests = {
+        ...prev,
+        [type]: newValue,
+      };
 
-    // Adults + children are counted as guests
-    const totalGuests =
-      updatedGuests.adults +
-      updatedGuests.children;
 
-    setGuestCount(totalGuests);
+      // Adults + children count toward property capacity
+      const totalGuests =
+        updatedGuests.adults +
+        updatedGuests.children;
+
+
+      // Update SearchContext
+      setGuestCount(totalGuests);
+
+
+      return updatedGuests;
+
+    });
+
   };
+
 
   return (
     <div
@@ -45,13 +55,14 @@ function GuestSelector({ setGuestCount }) {
         rounded-2xl
         shadow-lg
         p-5
-        z-50
+        z-[100]
       "
     >
 
       <h3 className="text-base font-semibold mb-4">
         Guests
       </h3>
+
 
       <GuestRow
         title="Adults"
@@ -65,6 +76,7 @@ function GuestSelector({ setGuestCount }) {
         }
       />
 
+
       <GuestRow
         title="Children"
         description="Ages 2–12"
@@ -77,6 +89,7 @@ function GuestSelector({ setGuestCount }) {
         }
       />
 
+
       <GuestRow
         title="Infants"
         description="Under 2"
@@ -88,6 +101,7 @@ function GuestSelector({ setGuestCount }) {
           updateGuest("infants", 1)
         }
       />
+
 
       <GuestRow
         title="Pets"
@@ -113,6 +127,7 @@ function GuestRow({
   onDecrease,
   onIncrease,
 }) {
+
   return (
     <div
       className="
@@ -126,6 +141,7 @@ function GuestRow({
     >
 
       <div>
+
         <p className="text-sm font-semibold">
           {title}
         </p>
@@ -133,7 +149,9 @@ function GuestRow({
         <p className="text-xs text-gray-500">
           {description}
         </p>
+
       </div>
+
 
       <div className="flex items-center gap-3">
 
@@ -161,9 +179,11 @@ function GuestRow({
           −
         </button>
 
+
         <span className="w-5 text-center text-sm">
           {count}
         </span>
+
 
         <button
           type="button"
@@ -189,5 +209,5 @@ function GuestRow({
   );
 }
 
-export default GuestSelector;
 
+export default GuestSelector;
