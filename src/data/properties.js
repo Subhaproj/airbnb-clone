@@ -96,15 +96,15 @@ const properties = [
         "https://images.unsplash.com/photo-1544984243-ec57ea16fe25?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1767348923171-f5535f88fb39?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     ],  
-    location: "Kerala, India",
-    title: "Luxury villa with pool",
+    location: "Nilgiri, India",
+    title: "Tree house stay",
     rating: "3.0",
     price: "₹5,000",
     guests: 8,
     bedrooms: "6 bedrooms",
     beds: "7 beds",
     host: "Wong",
-    categories: ["Villa"]
+    categories: ["Cabins","Countryside","Amazing Views"]
   },
     {
     id: 6,
@@ -116,15 +116,15 @@ const properties = [
         "https://images.unsplash.com/photo-1544984243-ec57ea16fe25?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1767348923171-f5535f88fb39?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     ],  
-    location: "Kerala, India",
-    title: "Luxury villa with pool",
+    location: "Kodaikanal, India",
+    title: "Hillstation stay with good view",
     rating: "5.0",
     price: "₹10,000",
     guests: 8,
     bedrooms: "6 bedrooms",
     beds: "7 beds",
     host: "Tom",
-    categories: ["Villa","Trending"]
+    categories: ["Villa","Trending","Amazing Views","Homes"]
   },
     {
     id: 7,
@@ -136,12 +136,12 @@ const properties = [
         "https://images.unsplash.com/photo-1544984243-ec57ea16fe25?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1767348923171-f5535f88fb39?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     ],  
-    location: "Kerala, India",
-    title: "Luxury villa with pool",
+    location: "Ooty, India",
+    title: "Luxury villa",
     rating: "4.0",
     price: "₹25,000",
-    guests: 5,
-    bedrooms: "5 bedrooms",
+    guests: 8,
+    bedrooms: "4 bedrooms",
     beds: "5 beds",
     host: "Hari",
     categories: ["Villa","Castles"]
@@ -156,13 +156,13 @@ const properties = [
         "https://images.unsplash.com/photo-1544984243-ec57ea16fe25?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1767348923171-f5535f88fb39?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     ],  
-    location: "Kerala, India",
+    location: "Hydrabad, India",
     title: "Luxury villa with pool",
     rating: "3.5",
     price: "₹25,000",
-    guests: 6,
-    bedrooms: "6 bedrooms",
-    beds: "7 beds",
+    guests: 10,
+    bedrooms: "5 bedrooms",
+    beds: "8 beds",
     host: "Ali",
     categories: ["Villa"]
   },
@@ -177,14 +177,14 @@ const properties = [
         "https://images.unsplash.com/photo-1767348923171-f5535f88fb39?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     ],  
     location: "Kerala, India",
-    title: "Luxury villa with pool",
+    title: "Lake view Stay",
     rating: "4.5",
-    price: "₹25,000",
-    guests: 8,
-    bedrooms: "6 bedrooms",
-    beds: "7 beds",
+    price: "₹9,000",
+    guests: 2,
+    bedrooms: "1 bedrooms",
+    beds: "2 beds",
     host: "Arjun",
-    categories: ["Villa","Trending"]
+    categories: ["Cabins","Trending"]
   },
     {
     id: 10,
@@ -196,10 +196,10 @@ const properties = [
         "https://images.unsplash.com/photo-1544984243-ec57ea16fe25?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "https://images.unsplash.com/photo-1767348923171-f5535f88fb39?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     ],  
-    location: "Kerala, India",
+    location: "Bangalore, India",
     title: "Luxury villa with pool",
     rating: "4.9",
-    price: "₹25,000",
+    price: "₹30,000",
     guests: 8,
     bedrooms: "6 bedrooms",
     beds: "7 beds",
