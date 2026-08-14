@@ -1,258 +1,334 @@
-# Airbnb Clone by Subhashree V
+# 🏡 Airbnb Clone
+
 
 A responsive Airbnb-inspired accommodation booking web application built with **React, Vite, Tailwind CSS, ShadCN UI, and React Router**.
 
-The project recreates the main guest-side Airbnb experience, including property discovery, search, categories, favorites, wishlists, authentication, trip bookings, guest selection, pricing calculations, and listing details.
+
+This project recreates a guest-side accommodation booking experience with property discovery, search, categories, guest selection, favorites, wishlists, authentication, booking, pricing calculations, trips, and responsive UI.
+
 
 ---
+
 
 ## 📌 Project Overview
 
-This project is a front-end Airbnb clone created for learning and portfolio purposes.
+
+This is a front-end Airbnb-inspired clone developed for **learning, practice, and portfolio purposes**.
+
 
 Users can:
 
-- Browse available stays
-- Search properties by place, title, host, or category
-- Filter properties using categories
+
+- Browse available properties
+- Search for stays
+- Filter properties by category
+- Filter properties according to guest capacity
 - View detailed property information
-- Select the number of guests
+- Select guests
 - Add properties to Favorites
 - Create and manage Wishlists
-- Log in and create an account
-- Book a property
+- Sign up and log in
+- Log out
+- Book properties
 - View booked Trips
 - Add a message while booking
-- Calculate stay price, extra guest charges, service fee, and tax
-- Navigate through a responsive interface
-- Use desktop and mobile-friendly search layouts
+- Calculate booking prices
+- Use responsive desktop, tablet, and mobile layouts
+- Access a Help Center
+- Use a language and currency menu
+
 
 ---
 
-## ✨ Features
 
-### 🏠 Home Page
+# ✨ Features
+
+
+## 🏠 Home Page
+
 
 - Airbnb-inspired landing page
-- Animated custom logo
 - Responsive navigation bar
-- Search interface
+- Animated custom logo
+- Search functionality
 - Category navigation
 - Property discovery
+- Responsive design
 
-### 🔎 Search
 
-The search system allows users to search using:
+---
+
+
+## 🔎 Search
+
+
+Users can search properties using:
+
 
 - Location
 - Property title
 - Host name
-- Property category
+- Category
 
-Search results are displayed on the Explore page.
+
+Search is case-insensitive.
+
 
 Example searches:
+
 
 ```text
 Bangalore
 Goa
 Villa
 Cabins
-Rahul
 Beach
-```
+Rahul
 
-Search is case-insensitive.
+Search results are displayed on the Explore page.
 
-### 🧭 Categories
+🧭 Categories
 
-Available categories include:
+The application supports property categories such as:
 
-- All
-- Beach
-- Amazing Views
-- Cabins
-- Trending
-- Countryside
-- Castles
-- Homes
-- City
-- Villa
+All
+Beach
+Amazing Views
+Cabins
+Trending
+Countryside
+Castles
+Homes
+City
+Villa
 
-Categories are connected to the property data and filter the Explore results.
+Categories are connected to the property data and filter the Explore page.
 
-### 👥 Guest Selection
+👥 Guest Selection
 
 The guest selector supports:
 
-- Adults
-- Children
-- Infants
-- Pets
+Adults
+Children
+Infants
+Pets
 
-Adults and children are counted as actual guests for property searching and booking.
+Adults and children are counted as actual guests when filtering properties and making bookings.
 
 The minimum number of adults is 1.
 
-### ⭐ Favorites
+The selected guest count is used by the Explore page to display properties that can accommodate the selected number of guests.
+
+Guest selection is reset when navigating to another page.
+
+⭐ Favorites
 
 Favorites are available only to logged-in users.
 
-When a logged-out user selects the Favorite button, they receive a login message.
+If a logged-out user clicks the Favorite button:
+
+Login required
+
+is displayed and the property is not added.
 
 Logged-in users can:
 
-- Add a property to Favorites
-- Remove a property from Favorites
-- View their Favorites page
+Add properties to Favorites
+Remove properties from Favorites
+View their Favorites page
+Receive toast notifications when favorites are added or removed
 
-Toast messages are displayed when a favorite is added or removed.
+Favorites are stored separately for users using the user's email.
 
-### ❤️ Wishlists
+❤️ Wishlists
 
-Users can create and manage wishlists.
+Users can create and manage Wishlists.
 
 Features include:
 
-- Create a wishlist
-- Add properties to a wishlist
-- View saved properties
-- Remove properties
-- Confirmation before removing a property
-- Login protection for wishlist actions
-
-### 🔐 Authentication
+Create a wishlist
+Add properties to a wishlist
+View saved properties
+Remove properties
+Delete wishlists
+Confirmation before deleting/removing
+Login protection for wishlist actions
+Toast notifications
+🔐 Authentication
 
 The project includes:
 
-- Login
-- Signup
-- Logout
-- User-specific Favorites
-- User-specific Wishlists
-- Password show/hide controls
-- Form validation
-- Toast notifications
+Sign up
+Login
+Logout
+User-specific Favorites
+User-specific Wishlists
+Protected booking
+Password show/hide functionality
+Form validation
+Toast notifications
 
-Authentication is implemented on the front end using local storage.
+Authentication is implemented on the front end using localStorage.
 
-### 🏡 Listing Details
+Authentication flow
+Sign Up
+   ↓
+Account Created
+   ↓
+Login
+   ↓
+Access Protected Features
+   ↓
+Logout
+
+Protected features include:
+
+Favorites
+Wishlists
+Booking
+🏡 Listing Details
 
 Each property has a dedicated listing details page.
 
-The page can display:
+The listing page can display:
 
-- Property images
-- Location
-- Title
-- Rating
-- Price per night
-- Number of guests
-- Bedrooms
-- Beds
-- Host
-- Categories
-- Favorite option
-- Wishlist option
-- Booking section
+Property images
+Location
+Title
+Rating
+Price per night
+Guest capacity
+Bedrooms
+Beds
+Host
+Categories
+Favorite button
+Wishlist button
+Booking section
 
-### 📅 Booking / Trips
+Dynamic listing routes are handled using React Router.
+
+Example:
+
+/listing/1
+/listing/2
+/listing/3
+📅 Booking / Trips
 
 Logged-in users can reserve properties.
 
 Booking includes:
 
-- Check-in date
-- Check-out date
-- Adults
-- Children
-- Infants
-- Pets
-- Extra guests
-- Guest message
+Check-in date
+Check-out date
+Adults
+Children
+Infants
+Pets
+Extra guests
+Guest message
 
-Successful bookings are saved and displayed in the Trips page.
+After a successful booking, the booking information is stored and displayed on the Trips page.
 
-### 💰 Booking Price Calculation
+💰 Booking Price Calculation
 
 The booking system calculates:
 
-```text
 Room Total
-+ Extra Guest Fee
-+ Service Fee
-+ Tax
-= Total Price
-```
++
+Extra Guest Fee
++
+Service Fee
++
+Tax
+=
+Total Price
+Current pricing rules
+Item	Price
+Extra guest	₹700 per guest / night
+Service fee	10%
+Tax	5%
+Maximum extra guests	2
 
-Current pricing rules:
+Extra guest charges are applied when the number of actual guests exceeds the property's stated guest capacity.
 
-- Extra guest fee: **₹700 per extra guest per night**
-- Service fee: **10%**
-- Tax: **5%**
+🧮 Booking Calculation Example
 
-The property has a guest capacity. If the selected number of actual guests exceeds that capacity, the additional guests are charged at ₹700 per guest per night.
+Suppose:
 
-The booking system currently allows up to **2 extra guests** above the property's stated capacity.
+Room price = ₹5,000/night
+Stay = 2 nights
+Property capacity = 8 guests
+Selected guests = 10
+Room total
+₹5,000 × 2
+= ₹10,000
+Extra guests
+10 - 8
+= 2 extra guests
+Extra guest fee
+2 × ₹700 × 2 nights
+= ₹2,800
+Stay subtotal
+₹10,000 + ₹2,800
+= ₹12,800
+Service fee
+10% of ₹12,800
+= ₹1,280
+Tax
+5% of ₹12,800
+= ₹640
+Final total
+₹12,800 + ₹1,280 + ₹640
+= ₹14,720
+💬 Guest Message
 
-### 💬 Guest Message
+Guests can leave a message during the booking process.
 
-Guests can leave a message while making a booking.
+The message is stored together with the trip information.
 
-The message is stored with the trip information.
+Example:
 
-### 🆘 Help Center
+Hi, we will arrive around 6 PM.
+🆘 Help Center
 
-A Help Center page is included for user assistance.
+The application includes a Help Center page for users.
 
-### 🌐 Language & Currency Menu
+The Help Center is accessible through the profile menu.
 
-The navigation bar includes a Language & Currency interface.
+🌐 Language & Currency
 
-Current displayed options:
+The navigation bar includes a Language & Currency menu.
 
-- Language: English
-- Currency: ₹ INR
+Currently displayed:
 
----
+Language: English
+Currency: ₹ INR
 
-## 🛠️ Technologies Used
+The interface is prepared for future language and currency functionality.
 
-### Frontend
-
-- React
-- JavaScript
-- HTML
-- CSS
-- Tailwind CSS
-
-### UI
-
-- ShadCN UI
-- Lucide React
-- Sonner Toast
-
-### Routing
-
-- React Router DOM
-
-### Build Tool
-
-- Vite
-
-### Storage
-
-- Browser Local Storage
-
-### Icons
-
-- Lucide React
-
----
-
-## 📂 Project Structure
-
-```text
+🛠️ Technologies Used
+Frontend
+React
+JavaScript
+HTML
+CSS
+Styling
+Tailwind CSS
+ShadCN UI
+Routing
+React Router DOM
+Icons
+Lucide React
+Notifications
+Sonner
+Build Tool
+Vite
+State Management
+React Context API
+Storage
+Browser localStorage
+📂 Project Structure
 airbnb-clone/
 │
 ├── public/
@@ -284,89 +360,76 @@ airbnb-clone/
 │   │   ├── Explore.jsx
 │   │   ├── ListingDetails.jsx
 │   │   ├── Favorites.jsx
-│   │   ├── Wishlists.jsx
-│   │   ├── Trips.jsx
 │   │   ├── Login.jsx
 │   │   ├── Signup.jsx
+│   │   ├── Trips.jsx
+│   │   ├── Wishlists.jsx
 │   │   └── HelpCenter.jsx
 │   │
 │   ├── App.jsx
 │   ├── main.jsx
 │   └── index.css
 │
-├── public/
 ├── package.json
 ├── vite.config.js
 ├── jsconfig.json
+├── index.html
 └── README.md
-```
+🧩 Context Architecture
 
----
+The project uses React Context API for shared application state.
 
-## 🧩 Context Architecture
-
-The application uses React Context API to share state across components.
-
-### SearchContext
+SearchContext
 
 Manages:
 
-- Search term
-- Guest count
-
-### CategoryContext
-
-Manages:
-
-- Selected category
-
-### AuthContext
+Search term
+Guest count
+CategoryContext
 
 Manages:
 
-- Current user
-- Login
-- Signup
-- Logout
-
-### FavoriteContext
+Selected category
+AuthContext
 
 Manages:
 
-- Favorites
-- Add/remove favorite
-- User-specific favorites
-
-### WishlistContext
-
-Manages:
-
-- Wishlists
-- Creating wishlists
-- Adding properties
-- Removing properties
-
-### TripContext
+Current user
+Signup
+Login
+Logout
+FavoriteContext
 
 Manages:
 
-- Booked trips
-- Booking information
-- Trip data
+Favorites
+Add favorite
+Remove favorite
+User-specific favorites
+WishlistContext
 
----
+Manages:
 
-## 🗃️ Property Data
+Wishlists
+Creating wishlists
+Adding properties
+Removing properties
+Deleting wishlists
+TripContext
+
+Manages:
+
+Booked trips
+Booking information
+Trip data
+🗃️ Property Data
 
 Property information is currently stored locally in:
 
-```text
 src/data/properties.js
-```
 
-Each property contains information such as:
+A property contains information such as:
 
-```javascript
 {
   id,
   image,
@@ -381,323 +444,412 @@ Each property contains information such as:
   host,
   categories
 }
-```
 
-The current sample data includes properties from locations such as:
+Sample property locations include:
 
-- Bangalore
-- Goa
-- Coorg
-- Kerala
-- Nilgiri
-- Kodaikanal
-- Ooty
-- Hyderabad
-
----
-
-## 🚀 Installation
-
-### 1. Clone the repository
-
-```bash
+Bangalore
+Goa
+Coorg
+Kerala
+Nilgiri
+Kodaikanal
+Ooty
+Hyderabad
+🚀 Installation
+1. Clone the repository
 git clone <your-github-repository-url>
-```
-
-### 2. Open the project
-
-```bash
+2. Open the project
 cd airbnb-clone
-```
-
-### 3. Install dependencies
-
-```bash
+3. Install dependencies
 npm install
-```
-
-### 4. Start the development server
-
-```bash
+4. Start the development server
 npm run dev
-```
 
-Vite will provide a local development URL, normally similar to:
+The application normally runs at:
 
-```text
 http://localhost:5173/
-```
+📦 Production Build
 
----
+Create a production build:
 
-## 📦 Build for Production
-
-To create a production build:
-
-```bash
 npm run build
-```
 
-To preview the production build locally:
+Preview the production build:
 
-```bash
 npm run preview
-```
+🌍 Deployment
 
----
+The project is configured for GitHub Pages deployment.
 
-## 🌍 Deployment
+The application uses:
 
-The project is configured for deployment using **GitHub Pages**.
-
-The deployed project uses:
-
-```text
 BrowserRouter
-```
 
-with the project basename configured for the GitHub Pages repository.
+with:
+
+basename={import.meta.env.BASE_URL}
+
+This allows the application to work correctly when deployed under the repository path.
 
 Live project:
 
-```text
 https://subhaproj.github.io/airbnb-clone/
-```
+💾 Data Storage
 
----
+This project currently uses localStorage instead of a backend database.
 
-## 💾 Data Storage
+The browser can store:
 
-This project currently uses **localStorage** instead of a backend database.
+User accounts
+Logged-in user
+Favorites
+Wishlists
+Trips
 
-Data such as authentication information, favorites, wishlists, and trips can therefore persist in the browser.
+This is a front-end learning project.
 
-This is a front-end learning project and does not currently use:
+The project currently does not use:
 
-- Node.js backend
-- Express
-- MongoDB
-- MySQL database
-- Firebase authentication
-- Payment gateway
-- Real booking API
+Node.js backend
+Express
+MongoDB
+MySQL
+Firebase Authentication
+Real booking API
+Payment gateway
+🔒 Protected User Actions
 
----
+The application protects important user actions.
 
-## 🔒 Authentication Behavior
+Logged-out user
 
-The current authentication system is intended for demonstration purposes.
+A logged-out user cannot:
 
-Users can:
+Add Favorites
+Manage Wishlists
+Make a booking
 
-```text
-Sign up
-   ↓
-Login
-   ↓
-Use protected features
-   ↓
+Instead, the user is prompted to log in.
+
+Logged-in user
+
+A logged-in user can:
+
+Favorite
+Wishlist
+Book
+View Trips
 Logout
-```
+📱 Responsive Design
 
-Protected features include:
+The application supports:
 
-- Favorites
-- Wishlists
-- Booking
-
-A logged-out user attempting to use protected functionality receives a notification asking them to log in.
-
----
-
-## 🧮 Booking Calculation Example
-
-Suppose:
-
-```text
-Room price = ₹5,000/night
-Stay = 2 nights
-Property capacity = 8 guests
-Selected guests = 10
-```
-
-Then:
-
-```text
-Room total
-₹5,000 × 2
-= ₹10,000
-```
-
-Extra guests:
-
-```text
-10 - 8 = 2 extra guests
-```
-
-Extra guest fee:
-
-```text
-2 × ₹700 × 2 nights
-= ₹2,800
-```
-
-Stay subtotal:
-
-```text
-₹10,000 + ₹2,800
-= ₹12,800
-```
-
-Service fee:
-
-```text
-10% of ₹12,800
-= ₹1,280
-```
-
-Tax:
-
-```text
-5% of ₹12,800
-= ₹640
-```
-
-Final total:
-
-```text
-₹12,800 + ₹1,280 + ₹640
-= ₹14,720
-```
-
----
-
-## 📱 Responsive Design
-
-The application is designed to work across:
-
-- Desktop
-- Laptop
-- Tablet
-- Mobile
+Desktop
+Laptop
+Tablet
+Mobile
 
 Responsive features include:
 
-- Desktop search bar
-- Mobile search bar
-- Responsive property grid
-- Mobile category scrolling
-- Responsive navigation
-- Responsive authentication pages
-- Responsive booking interface
+Desktop search
+Mobile search
+Responsive property grid
+Horizontal category scrolling
+Responsive navigation
+Responsive authentication pages
+Responsive listing details
+Responsive booking interface
+🎨 UI Design
 
----
+The project uses an Airbnb-inspired modern UI.
 
-## 🎨 UI Design
+Design features include:
 
-The project uses an Airbnb-inspired design approach with:
+Rounded cards
+Rounded buttons
+Clean layouts
+White backgrounds
+Red accent buttons
+Property image cards
+Hover effects
+Toast notifications
+Dropdown menus
+Responsive layouts
+Custom animated logo
+Modern transparent authentication pages
+♿ Accessibility
 
-- Rounded cards
-- Rounded buttons
-- Clean white backgrounds
-- Responsive layouts
-- Property image cards
-- Red accent buttons
-- Hover animations
-- Toast notifications
-- Modal dialogs
-- Custom animated logo
+Accessibility improvements include:
 
----
+Semantic HTML elements
+Form labels and placeholders
+aria-label attributes for important icon buttons
+Keyboard-friendly forms
+Button elements for interactive actions
+Proper input types
+Focus-friendly navigation
 
-## 🧑‍💻 Development Concepts Demonstrated
+Examples:
 
-This project demonstrates practical React concepts including:
+aria-label="Search"
+aria-label="Open profile menu"
+aria-label="Choose language and currency"
+⚡ Frontend Best Practices
 
-- Functional components
-- React Hooks
-- `useState`
-- `useEffect`
-- `useContext`
-- `useRef`
-- React Context API
-- React Router
-- Dynamic routes
-- Conditional rendering
-- Array filtering
-- Array mapping
-- Form handling
-- Local storage
-- Reusable components
-- Responsive Tailwind CSS
-- UI state management
-- Authentication state
-- Protected user actions
-- Booking calculations
+The project follows several frontend development best practices.
 
----
+1. Error Handling
 
-## 🔮 Future Improvements
+The application uses validation and fallback UI for user actions.
 
-Possible future development areas include:
+Examples include:
 
-- Real backend API
-- Database integration
-- Secure authentication
-- Real user accounts
-- Host dashboard
-- Property listing creation
-- Real-time availability
-- Double-booking prevention with a backend
-- Payment gateway
-- Booking cancellation
-- Reviews and ratings
-- Advanced search filters
-- Date availability filtering
-- Map integration
-- Real language selection
-- Real currency conversion
-- Email notifications
+Invalid login messages
+Signup validation
+Booking validation
+Empty search results
+Protected action messages
+2. Small and Focused Components
 
----
+The UI is divided into reusable components such as:
 
-## ⚠️ Disclaimer
+Navbar
+CategoryBar
+PropertyCard
+GuestSelector
+WishlistCard
+Footer
+AnimatedLogo
 
-This project is an **Airbnb-inspired educational clone** created for learning and portfolio purposes.
+Each component has a focused responsibility.
 
-It is not affiliated with, sponsored by, or officially connected to Airbnb.
+3. State Management
 
-Property images are sourced from external image services and are used as sample content for the project.
+React Context API is used for shared state.
 
----
+Examples:
 
-## 👩‍💻 Author
+AuthContext
+SearchContext
+CategoryContext
+FavoriteContext
+WishlistContext
+TripContext
 
-**Subhashree V**
+Local state is used for component-specific UI such as:
 
-BCA Graduate | Aspiring Web Developer, Software Developer & UI/UX Designer
+Dropdowns
+Menus
+Guest selector
+Password visibility
+4. Performance
 
-### Skills demonstrated in this project
+The project avoids unnecessary global state and keeps state close to the components that need it.
 
-- React
-- JavaScript
-- HTML
-- CSS
-- Tailwind CSS
-- React Router
-- Context API
-- Responsive UI Design
-- Local Storage
-- UI/UX Development
+Filtering is performed from the property dataset based on:
 
----
+Category
+Search
+Guest capacity
 
-## ⭐ Project Highlights
+Future optimization can include:
 
-The project currently combines:
+React.memo
+useMemo
+useCallback
+Lazy loading
+Route-level code splitting
+5. Consistent Styling
 
-```text
+Tailwind CSS is used throughout the application.
+
+The project uses consistent:
+
+Spacing
+Rounded corners
+Typography
+Responsive breakpoints
+Button styles
+Colors
+6. Component Lifecycle
+
+useEffect cleanup is used where event listeners are registered.
+
+For example, the Navbar removes the document click listener when the component is unmounted.
+
+7. Accessibility
+
+The application includes:
+
+Semantic elements
+Accessible buttons
+ARIA labels
+Keyboard-friendly forms
+Appropriate input types
+8. Routing
+
+React Router is used for SPA navigation.
+
+Current routes include:
+
+/
+/explore
+/listing/:id
+/favorites
+/login
+/signup
+/trips
+/wishlists
+/help
+9. Asset Loading
+
+Property images are loaded from the property data and displayed through reusable property cards.
+
+Future improvements can include:
+
+Lazy loading images
+Lazy loading routes
+Code splitting
+Optimized image formats
+10. Testing & Debugging
+
+Development and debugging are performed using:
+
+Browser Developer Tools
+VS Code
+Vite development server
+React error messages
+Console debugging
+GitHub Actions build checks
+
+Production builds are tested using:
+
+npm run build
+🧑‍💻 Development Concepts Demonstrated
+
+This project demonstrates:
+
+React functional components
+React Hooks
+useState
+useEffect
+useContext
+useRef
+React Context API
+React Router
+Dynamic routes
+Conditional rendering
+Array filtering
+Array mapping
+Form handling
+Local storage
+Reusable components
+Responsive Tailwind CSS
+Authentication state
+Protected actions
+Booking calculations
+Search functionality
+Category filtering
+Guest filtering
+Toast notifications
+🔮 Future Improvements
+
+Possible future improvements include:
+
+Real backend API
+Database integration
+Secure authentication
+Real user accounts
+Host dashboard
+Host property creation
+Real-time availability
+Backend double-booking prevention
+Payment gateway
+Booking cancellation
+Reviews and ratings
+Advanced filters
+Date availability filtering
+Map integration
+Real language selection
+Real currency conversion
+Email notifications
+Automated testing
+React component testing
+Route lazy loading
+Image lazy loading
+Error Boundary implementation
+Better loading states
+⚠️ Current Limitations
+
+This project is currently a front-end application.
+
+Therefore:
+
+Authentication is not production-secure
+User data is stored in localStorage
+Booking data is stored locally
+There is no real payment processing
+There is no real-time booking database
+Multiple users cannot share synchronized booking data
+Property availability is not controlled by a backend
+Images are sample/external images
+The language and currency menu is currently UI-only
+🔐 Security Note
+
+This project is intended for educational purposes.
+
+Passwords and user information are stored using browser localStorage and should not be considered secure authentication for a production application.
+
+A production version should use:
+
+Backend Authentication
+        ↓
+Secure Password Hashing
+        ↓
+Database
+        ↓
+Session / Token Authentication
+🧪 Development Commands
+
+Install dependencies:
+
+npm install
+
+Start development server:
+
+npm run dev
+
+Build production version:
+
+npm run build
+
+Preview production build:
+
+npm run preview
+🌐 Live Demo
+https://subhaproj.github.io/airbnb-clone/
+👩‍💻 Author
+Subhashree V
+
+BCA Graduate | Aspiring Software Developer & UI/UX Designer
+
+This project demonstrates practical experience with:
+
 React
+JavaScript
+HTML
+CSS
+Tailwind CSS
+ShadCN UI
+React Router
+Context API
+Local Storage
+Responsive UI/UX
+Frontend application architecture
+⭐ Project Highlights
+React
+   +
+Vite
    +
 Tailwind CSS
    +
@@ -711,13 +863,32 @@ Local Storage
    +
 Responsive Design
    +
-Booking System
+Authentication
+   +
+Search
+   +
+Categories
+   +
+Guest Filtering
    +
 Favorites
    +
 Wishlists
    +
-Authentication
-```
+Booking
+   +
+Trips
+   +
+Pricing Calculation
+   +
+Toast Notifications
 
-Built as a practical front-end project to demonstrate modern React development and UI/UX implementation.
+Built as a practical front-end project to demonstrate modern React development, state management, responsive UI/UX implementation, and real-world application workflows.
+
+⚠️ Disclaimer
+
+This is an Airbnb-inspired educational clone created for learning and portfolio purposes.
+
+It is not affiliated with, sponsored by, or officially connected to Airbnb.
+
+Property information and images are used as sample content for demonstration purposes.
