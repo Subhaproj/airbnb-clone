@@ -1,4 +1,4 @@
-# Airbnb Clone
+# Airbnb Clone by Subhashree V
 
 A responsive Airbnb-inspired accommodation booking web application built with **React, Vite, Tailwind CSS, ShadCN UI, and React Router**.
 
