@@ -84,6 +84,7 @@ Villa
 Cabins
 Beach
 Rahul
+```
 
 Search results are displayed on the Explore page.
 
@@ -126,9 +127,9 @@ Guest selection is reset when navigating to another page.
 Favorites are available only to logged-in users.
 
 If a logged-out user clicks the Favorite button:
-
+```text
 Login required
-
+```
 is displayed and the property is not added.
 
 Logged-in users can:
@@ -154,6 +155,7 @@ Delete wishlists
 Confirmation before deleting/removing
 Login protection for wishlist actions
 Toast notifications
+
 🔐 Authentication
 
 The project includes:
@@ -171,6 +173,7 @@ Toast notifications
 Authentication is implemented on the front end using localStorage.
 
 Authentication flow
+```text
 Sign Up
    ↓
 Account Created
@@ -180,12 +183,13 @@ Login
 Access Protected Features
    ↓
 Logout
-
+```
 Protected features include:
 
 Favorites
 Wishlists
 Booking
+
 🏡 Listing Details
 
 Each property has a dedicated listing details page.
@@ -209,10 +213,11 @@ Booking section
 Dynamic listing routes are handled using React Router.
 
 Example:
-
+```text
 /listing/1
 /listing/2
 /listing/3
+```
 📅 Booking / Trips
 
 Logged-in users can reserve properties.
@@ -233,7 +238,7 @@ After a successful booking, the booking information is stored and displayed on t
 💰 Booking Price Calculation
 
 The booking system calculates:
-
+```text
 Room Total
 +
 Extra Guest Fee
@@ -243,44 +248,63 @@ Service Fee
 Tax
 =
 Total Price
+```
 Current pricing rules
-Item	Price
-Extra guest	₹700 per guest / night
-Service fee	10%
-Tax	5%
-Maximum extra guests	2
+```text
+| Item                 |                  Price |
+| -------------------- | ---------------------: |
+| Extra guest          | ₹700 per guest / night |
+| Service fee          |                    10% |
+| Tax                  |                     5% |
+| Maximum extra guests |                      2 |
 
+```
 Extra guest charges are applied when the number of actual guests exceeds the property's stated guest capacity.
 
 🧮 Booking Calculation Example
 
 Suppose:
-
+```text
 Room price = ₹5,000/night
 Stay = 2 nights
 Property capacity = 8 guests
 Selected guests = 10
+```
 Room total
+```text
 ₹5,000 × 2
 = ₹10,000
+```
 Extra guests
+```text
 10 - 8
 = 2 extra guests
+```
 Extra guest fee
+```text
 2 × ₹700 × 2 nights
 = ₹2,800
+```
 Stay subtotal
+```text
 ₹10,000 + ₹2,800
 = ₹12,800
+```
 Service fee
+```text
 10% of ₹12,800
 = ₹1,280
+```
 Tax
+```text
 5% of ₹12,800
 = ₹640
+```
 Final total
+```text
 ₹12,800 + ₹1,280 + ₹640
 = ₹14,720
+```
 💬 Guest Message
 
 Guests can leave a message during the booking process.
@@ -288,8 +312,9 @@ Guests can leave a message during the booking process.
 The message is stored together with the trip information.
 
 Example:
-
+```text
 Hi, we will arrive around 6 PM.
+```
 🆘 Help Center
 
 The application includes a Help Center page for users.
@@ -301,10 +326,10 @@ The Help Center is accessible through the profile menu.
 The navigation bar includes a Language & Currency menu.
 
 Currently displayed:
-
+```text
 Language: English
 Currency: ₹ INR
-
+```
 The interface is prepared for future language and currency functionality.
 
 🛠️ Technologies Used
