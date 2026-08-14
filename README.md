@@ -105,7 +105,7 @@ Villa
 
 Categories are connected to the property data and filter the Explore page.
 
-#👥 Guest Selection
+# 👥 Guest Selection
 
 The guest selector supports:
 
