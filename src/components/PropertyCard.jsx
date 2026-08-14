@@ -403,6 +403,7 @@ const handleRemoveFromWishlist = () => {
         <img
           src={property.image}
           alt={property.title}
+          loading="lazy"
           className="
             w-full
             h-72
