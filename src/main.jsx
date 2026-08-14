@@ -3,36 +3,60 @@ import ReactDOM from "react-dom/client";
 import { Toaster } from "sonner";
 import App from "./App.jsx";
 import "./index.css";
+
 import { BrowserRouter } from "react-router-dom";
+
 import { SearchProvider } from "./context/SearchContext";
 import { CategoryProvider } from "./context/CategoryContext";
 import { FavoriteProvider } from "./context/FavoriteContext";
 import { AuthProvider } from "./context/AuthContext";
-import { BookingProvider } from "./context/BookingContext";
 import { TripProvider } from "./context/TripContext";
 import { WishlistProvider } from "./context/WishlistContext";
 
+import ErrorBoundary from "./components/ErrorBoundary";
 
 ReactDOM.createRoot(
   document.getElementById("root")
 ).render(
 
-<AuthProvider>
-  <SearchProvider>
-    <CategoryProvider>
-      <FavoriteProvider>
-        <TripProvider>
-          <WishlistProvider>
-            <BrowserRouter basename={import.meta.env.BASE_URL}>
-              <App />
-              <Toaster position="top-center" />
-            </BrowserRouter>
-            
-          </WishlistProvider>
-        </TripProvider>
-      </FavoriteProvider>
-    </CategoryProvider>
-  </SearchProvider>
-</AuthProvider>
+  <ErrorBoundary>
+
+    <AuthProvider>
+
+      <SearchProvider>
+
+        <CategoryProvider>
+
+          <FavoriteProvider>
+
+            <TripProvider>
+
+              <WishlistProvider>
+
+                <BrowserRouter
+                  basename={import.meta.env.BASE_URL}
+                >
+
+                  <App />
+
+                  <Toaster
+                    position="top-center"
+                  />
+
+                </BrowserRouter>
+
+              </WishlistProvider>
+
+            </TripProvider>
+
+          </FavoriteProvider>
+
+        </CategoryProvider>
+
+      </SearchProvider>
+
+    </AuthProvider>
+
+  </ErrorBoundary>
 
 );
