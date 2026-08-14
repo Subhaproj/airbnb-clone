@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 
 import CategoryBar from "../components/CategoryBar";
 import PropertyCard from "../components/PropertyCard";
@@ -24,78 +24,91 @@ function Explore() {
 
   // =========================================
   // FILTER PROPERTIES
+  // useMemo prevents unnecessary recalculation
   // =========================================
 
-  const filteredProperties = properties.filter(
-    (property) => {
+  const filteredProperties = useMemo(() => {
 
-      // -------------------------
-      // CATEGORY FILTER
-      // -------------------------
+    const search =
+      searchTerm
+        .trim()
+        .toLowerCase();
 
-      const matchesCategory =
-        selectedCategory === "" ||
-        property.categories?.some(
-          (category) =>
-            category.toLowerCase() ===
-            selectedCategory.toLowerCase()
+    const category =
+      selectedCategory.toLowerCase();
+
+    const guests =
+      Number(guestCount);
+
+
+    return properties.filter(
+      (property) => {
+
+        // -------------------------
+        // CATEGORY FILTER
+        // -------------------------
+
+        const matchesCategory =
+          selectedCategory === "" ||
+          property.categories?.some(
+            (propertyCategory) =>
+              propertyCategory
+                .toLowerCase() === category
+          );
+
+
+        // -------------------------
+        // SEARCH FILTER
+        // -------------------------
+
+        const matchesSearch =
+          search === "" ||
+          property.location
+            ?.toLowerCase()
+            .includes(search) ||
+          property.title
+            ?.toLowerCase()
+            .includes(search) ||
+          property.host
+            ?.toLowerCase()
+            .includes(search) ||
+          property.categories?.some(
+            (propertyCategory) =>
+              propertyCategory
+                .toLowerCase()
+                .includes(search)
+          );
+
+
+        // -------------------------
+        // GUEST FILTER
+        // -------------------------
+
+        const propertyGuestCapacity =
+          Number(property.guests);
+
+        const matchesGuests =
+          propertyGuestCapacity >= guests;
+
+
+        // -------------------------
+        // FINAL FILTER
+        // -------------------------
+
+        return (
+          matchesCategory &&
+          matchesSearch &&
+          matchesGuests
         );
 
+      }
+    );
 
-      // -------------------------
-      // SEARCH FILTER
-      // -------------------------
-
-      const search =
-        searchTerm
-          .trim()
-          .toLowerCase();
-
-
-      const matchesSearch =
-        search === "" ||
-        property.location
-          ?.toLowerCase()
-          .includes(search) ||
-        property.title
-          ?.toLowerCase()
-          .includes(search) ||
-        property.host
-          ?.toLowerCase()
-          .includes(search) ||
-        property.categories?.some(
-          (category) =>
-            category
-              .toLowerCase()
-              .includes(search)
-        );
-
-
-      // -------------------------
-      // GUEST FILTER
-      // -------------------------
-
-      const propertyGuestCapacity =
-        Number(property.guests);
-
-
-      const matchesGuests =
-        propertyGuestCapacity >=
-        Number(guestCount);
-
-
-      // -------------------------
-      // FINAL FILTER
-      // -------------------------
-
-      return (
-        matchesCategory &&
-        matchesSearch &&
-        matchesGuests
-      );
-
-    }
-  );
+  }, [
+    selectedCategory,
+    searchTerm,
+    guestCount
+  ]);
 
 
   return (
@@ -180,7 +193,7 @@ function Explore() {
 
         {/* =================================
             PROPERTY GRID
-        ================================== */}
+        ================================= */}
 
         {filteredProperties.length > 0 ? (
 

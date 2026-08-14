@@ -76,6 +76,7 @@ function Home() {
         <img
           src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
           alt="Beautiful holiday home"
+          loading="lazy"
           className="
             absolute
       inset-x-4

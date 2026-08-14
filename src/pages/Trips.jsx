@@ -173,6 +173,7 @@ function Trips() {
               <img
                 src={trip.image}
                 alt={trip.title}
+                loading="lazy"
                 className="
                   w-full
                   h-56

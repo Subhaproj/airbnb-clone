@@ -133,6 +133,7 @@ function Signup() {
           <div className="mb-5">
 
             <label
+              htmlFor="signup-name"
               className="
                 block
                 text-sm
@@ -158,6 +159,7 @@ function Signup() {
               />
 
               <input
+                id="signup-name"
                 type="text"
                 value={name}
                 onChange={(e) =>
@@ -193,6 +195,7 @@ function Signup() {
           <div className="mb-5">
 
             <label
+            htmlFor="signup-email"
               className="
                 block
                 text-sm
@@ -218,6 +221,7 @@ function Signup() {
               />
 
               <input
+                id="signup-email"
                 type="email"
                 value={email}
                 onChange={(e) =>
@@ -253,6 +257,7 @@ function Signup() {
           <div className="mb-6">
 
             <label
+              htmlFor="signup-password"
               className="
                 block
                 text-sm
@@ -278,6 +283,7 @@ function Signup() {
               />
 
               <input
+                id="signup-password"
                 type={
                   showPassword
                     ? "text"

@@ -309,6 +309,7 @@ if (!/^[0-9]{10}$/.test(guestPhone)) {
             key={index}
             src={img}
             alt={property.title}
+            loading="lazy"
             className="
               h-64
               w-full

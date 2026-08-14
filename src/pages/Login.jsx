@@ -100,6 +100,7 @@ function Login() {
           <div className="mb-5">
 
             <label
+              htmlFor="login-password"
               className="
                 block
                 text-sm
@@ -123,12 +124,15 @@ function Login() {
                   text-white/70
                 "
               />
+              
 
               <input
+                id="login-email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
+                autoComplete="email"
                 required
                 className="
                   w-full
@@ -159,6 +163,7 @@ function Login() {
           <div className="mb-6">
 
             <label
+            htmlFor="login-password"
               className="
                 block
                 text-sm
@@ -184,6 +189,7 @@ function Login() {
               />
 
               <input
+                id="login-password"
                 type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
