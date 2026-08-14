@@ -88,7 +88,7 @@ Rahul
 
 Search results are displayed on the Explore page.
 
-#🧭 Categories
+# 🧭 Categories
 
 The application supports property categories such as:
 
@@ -122,7 +122,7 @@ The selected guest count is used by the Explore page to display properties that 
 
 Guest selection is reset when navigating to another page.
 
-#⭐ Favorites
+# ⭐ Favorites
 
 Favorites are available only to logged-in users.
 
@@ -141,7 +141,7 @@ Receive toast notifications when favorites are added or removed
 
 Favorites are stored separately for users using the user's email.
 
-#❤️ Wishlists
+# ❤️ Wishlists
 
 Users can create and manage Wishlists.
 
@@ -156,7 +156,7 @@ Confirmation before deleting/removing
 Login protection for wishlist actions
 Toast notifications
 
-#🔐 Authentication
+# 🔐 Authentication
 
 The project includes:
 
@@ -190,7 +190,7 @@ Favorites
 Wishlists
 Booking
 
-#🏡 Listing Details
+# 🏡 Listing Details
 
 Each property has a dedicated listing details page.
 
@@ -218,7 +218,7 @@ Example:
 /listing/2
 /listing/3
 ```
-#📅 Booking / Trips
+# 📅 Booking / Trips
 
 Logged-in users can reserve properties.
 
@@ -235,7 +235,7 @@ Guest message
 
 After a successful booking, the booking information is stored and displayed on the Trips page.
 
-#💰 Booking Price Calculation
+# 💰 Booking Price Calculation
 
 The booking system calculates:
 ```text
@@ -259,7 +259,7 @@ Maximum extra guests	2
 ```
 Extra guest charges are applied when the number of actual guests exceeds the property's stated guest capacity.
 
-#🧮 Booking Calculation Example
+# 🧮 Booking Calculation Example
 
 Suppose:
 ```text
@@ -303,7 +303,7 @@ Final total
 ₹12,800 + ₹1,280 + ₹640
 = ₹14,720
 ```
-#💬 Guest Message
+# 💬 Guest Message
 
 Guests can leave a message during the booking process.
 
@@ -313,13 +313,13 @@ Example:
 ```text
 Hi, we will arrive around 6 PM.
 ```
-#🆘 Help Center
+# 🆘 Help Center
 
 The application includes a Help Center page for users.
 
 The Help Center is accessible through the profile menu.
 
-#🌐 Language & Currency
+# 🌐 Language & Currency
 
 The navigation bar includes a Language & Currency menu.
 
@@ -330,7 +330,7 @@ Currency: ₹ INR
 ```
 The interface is prepared for future language and currency functionality.
 
-#🛠️ Technologies Used
+# 🛠️ Technologies Used
 
 Frontend
 React
@@ -353,7 +353,7 @@ React Context API
 Storage
 Browser localStorage
 
-#📂 Project Structure
+# 📂 Project Structure
 ```text
 airbnb-clone/
 │
@@ -402,24 +402,24 @@ airbnb-clone/
 ├── index.html
 └── README.md
 ```
-#🧩 Context Architecture
+# 🧩 Context Architecture
 
 The project uses React Context API for shared application state.
 
-#SearchContext
+# SearchContext
 
 Manages:
 
 Search term
 Guest count
 
-#CategoryContext
+# CategoryContext
 
 Manages:
 
 Selected category
 
-#AuthContext
+# AuthContext
 
 Manages:
 
@@ -428,7 +428,7 @@ Signup
 Login
 Logout
 
-#FavoriteContext
+# FavoriteContext
 
 Manages:
 
@@ -437,7 +437,7 @@ Add favorite
 Remove favorite
 User-specific favorites
 
-#WishlistContext
+# WishlistContext
 
 Manages:
 
@@ -447,7 +447,7 @@ Adding properties
 Removing properties
 Deleting wishlists
 
-#TripContext
+# TripContext
 
 Manages:
 
@@ -455,7 +455,7 @@ Booked trips
 Booking information
 Trip data
 
-#🗃️ Property Data
+# 🗃️ Property Data
 
 Property information is currently stored locally in:
 ```text
@@ -489,7 +489,7 @@ Kodaikanal
 Ooty
 Hyderabad
 
-#🚀 Installation
+# 🚀 Installation
 1. Clone the repository
 ```text
 git clone <your-github-repository-url>
@@ -511,7 +511,7 @@ The application normally runs at:
 ```text
 http://localhost:5173/
 ```
-#📦 Production Build
+# 📦 Production Build
 
 Create a production build:
 ```text
@@ -521,7 +521,7 @@ Preview the production build:
 ```text
 npm run preview
 ```
-#🌍 Deployment
+# 🌍 Deployment
 
 The project is configured for GitHub Pages deployment.
 
@@ -539,7 +539,7 @@ Live project:
 ```text
 https://subhaproj.github.io/airbnb-clone/
 ```
-#💾 Data Storage
+# 💾 Data Storage
 
 This project currently uses localStorage instead of a backend database.
 
@@ -563,7 +563,7 @@ Firebase Authentication
 Real booking API
 Payment gateway
 
-#🔒 Protected User Actions
+# 🔒 Protected User Actions
 
 The application protects important user actions.
 
@@ -587,7 +587,7 @@ Book
 View Trips
 Logout
 ```
-#📱 Responsive Design
+# 📱 Responsive Design
 
 The application supports:
 
@@ -607,7 +607,7 @@ Responsive authentication pages
 Responsive listing details
 Responsive booking interface
 
-#🎨 UI Design
+# 🎨 UI Design
 
 The project uses an Airbnb-inspired modern UI.
 
@@ -626,7 +626,7 @@ Responsive layouts
 Custom animated logo
 Modern transparent authentication pages
 
-#♿ Accessibility
+# ♿ Accessibility
 
 Accessibility improvements include:
 
@@ -648,7 +648,7 @@ aria-label="Open profile menu"
 ```text
 aria-label="Choose language and currency"
 ```
-#⚡ Frontend Best Practices
+# ⚡ Frontend Best Practices
 
 The project follows several frontend development best practices.
 
@@ -787,7 +787,7 @@ Production builds are tested using:
 ```text
 npm run build
 ```
-#🧑‍💻 Development Concepts Demonstrated
+# 🧑‍💻 Development Concepts Demonstrated
 
 This project demonstrates:
 
@@ -815,7 +815,7 @@ Category filtering
 Guest filtering
 Toast notifications
 
-#🔮 Future Improvements
+# 🔮 Future Improvements
 
 Possible future improvements include:
 
@@ -843,7 +843,7 @@ Image lazy loading
 Error Boundary implementation
 Better loading states
 
-#⚠️ Current Limitations
+# ⚠️ Current Limitations
 
 This project is currently a front-end application.
 
@@ -859,7 +859,7 @@ Property availability is not controlled by a backend
 Images are sample/external images
 The language and currency menu is currently UI-only
 
-#🔐 Security Note
+# 🔐 Security Note
 
 This project is intended for educational purposes.
 
@@ -875,7 +875,7 @@ Database
         ↓
 Session / Token Authentication
 ```
-#🧪 Development Commands
+# 🧪 Development Commands
 
 Install dependencies:
 ```text
@@ -893,11 +893,11 @@ Preview production build:
 ```text
 npm run preview
 ```
-#🌐 Live Demo
+# 🌐 Live Demo
 ```text
 https://subhaproj.github.io/airbnb-clone/
 ```
-#👩‍💻 Author
+# 👩‍💻 Author
 Subhashree V
 
 BCA Graduate | Aspiring WEB & Software Developer and UI/UX Designer
@@ -916,7 +916,7 @@ Local Storage
 Responsive UI/UX
 Frontend application architecture
 
-#⭐ Project Highlights
+# ⭐ Project Highlights
 ```text
 React
    +
@@ -957,7 +957,7 @@ Toast Notifications
 
 Built as a practical front-end project to demonstrate modern React development, state management, responsive UI/UX implementation, and real-world application workflows.
 
-#⚠️ Disclaimer
+# ⚠️ Disclaimer
 
 This is an Airbnb-inspired educational clone created for learning and portfolio purposes.
 
