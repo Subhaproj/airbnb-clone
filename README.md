@@ -1,4 +1,4 @@
-# 🏡 Airbnb Clone
+# 🏡 Airbnb Clone By Subhashree V
 
 
 A responsive Airbnb-inspired accommodation booking web application built with **React, Vite, Tailwind CSS, ShadCN UI, and React Router**.
@@ -88,7 +88,7 @@ Rahul
 
 Search results are displayed on the Explore page.
 
-🧭 Categories
+#🧭 Categories
 
 The application supports property categories such as:
 
@@ -105,7 +105,7 @@ Villa
 
 Categories are connected to the property data and filter the Explore page.
 
-👥 Guest Selection
+#👥 Guest Selection
 
 The guest selector supports:
 
@@ -122,7 +122,7 @@ The selected guest count is used by the Explore page to display properties that 
 
 Guest selection is reset when navigating to another page.
 
-⭐ Favorites
+#⭐ Favorites
 
 Favorites are available only to logged-in users.
 
@@ -141,7 +141,7 @@ Receive toast notifications when favorites are added or removed
 
 Favorites are stored separately for users using the user's email.
 
-❤️ Wishlists
+#❤️ Wishlists
 
 Users can create and manage Wishlists.
 
@@ -156,7 +156,7 @@ Confirmation before deleting/removing
 Login protection for wishlist actions
 Toast notifications
 
-🔐 Authentication
+#🔐 Authentication
 
 The project includes:
 
@@ -190,7 +190,7 @@ Favorites
 Wishlists
 Booking
 
-🏡 Listing Details
+#🏡 Listing Details
 
 Each property has a dedicated listing details page.
 
@@ -218,7 +218,7 @@ Example:
 /listing/2
 /listing/3
 ```
-📅 Booking / Trips
+#📅 Booking / Trips
 
 Logged-in users can reserve properties.
 
@@ -235,7 +235,7 @@ Guest message
 
 After a successful booking, the booking information is stored and displayed on the Trips page.
 
-💰 Booking Price Calculation
+#💰 Booking Price Calculation
 
 The booking system calculates:
 ```text
@@ -251,17 +251,15 @@ Total Price
 ```
 Current pricing rules
 ```text
-| Item                 |                  Price |
-| -------------------- | ---------------------: |
-| Extra guest          | ₹700 per guest / night |
-| Service fee          |                    10% |
-| Tax                  |                     5% |
-| Maximum extra guests |                      2 |
-
+Item	Price
+Extra guest	₹700 per guest / night
+Service fee	10%
+Tax	5%
+Maximum extra guests	2
 ```
 Extra guest charges are applied when the number of actual guests exceeds the property's stated guest capacity.
 
-🧮 Booking Calculation Example
+#🧮 Booking Calculation Example
 
 Suppose:
 ```text
@@ -305,7 +303,7 @@ Final total
 ₹12,800 + ₹1,280 + ₹640
 = ₹14,720
 ```
-💬 Guest Message
+#💬 Guest Message
 
 Guests can leave a message during the booking process.
 
@@ -315,13 +313,13 @@ Example:
 ```text
 Hi, we will arrive around 6 PM.
 ```
-🆘 Help Center
+#🆘 Help Center
 
 The application includes a Help Center page for users.
 
 The Help Center is accessible through the profile menu.
 
-🌐 Language & Currency
+#🌐 Language & Currency
 
 The navigation bar includes a Language & Currency menu.
 
@@ -332,7 +330,8 @@ Currency: ₹ INR
 ```
 The interface is prepared for future language and currency functionality.
 
-🛠️ Technologies Used
+#🛠️ Technologies Used
+
 Frontend
 React
 JavaScript
@@ -353,7 +352,9 @@ State Management
 React Context API
 Storage
 Browser localStorage
-📂 Project Structure
+
+#📂 Project Structure
+```text
 airbnb-clone/
 │
 ├── public/
@@ -400,22 +401,25 @@ airbnb-clone/
 ├── jsconfig.json
 ├── index.html
 └── README.md
-🧩 Context Architecture
+```
+#🧩 Context Architecture
 
 The project uses React Context API for shared application state.
 
-SearchContext
+#SearchContext
 
 Manages:
 
 Search term
 Guest count
-CategoryContext
+
+#CategoryContext
 
 Manages:
 
 Selected category
-AuthContext
+
+#AuthContext
 
 Manages:
 
@@ -423,7 +427,8 @@ Current user
 Signup
 Login
 Logout
-FavoriteContext
+
+#FavoriteContext
 
 Manages:
 
@@ -431,7 +436,8 @@ Favorites
 Add favorite
 Remove favorite
 User-specific favorites
-WishlistContext
+
+#WishlistContext
 
 Manages:
 
@@ -440,21 +446,23 @@ Creating wishlists
 Adding properties
 Removing properties
 Deleting wishlists
-TripContext
+
+#TripContext
 
 Manages:
 
 Booked trips
 Booking information
 Trip data
-🗃️ Property Data
+
+#🗃️ Property Data
 
 Property information is currently stored locally in:
-
+```text
 src/data/properties.js
-
+```
 A property contains information such as:
-
+```text
 {
   id,
   image,
@@ -469,7 +477,7 @@ A property contains information such as:
   host,
   categories
 }
-
+```
 Sample property locations include:
 
 Bangalore
@@ -480,46 +488,58 @@ Nilgiri
 Kodaikanal
 Ooty
 Hyderabad
-🚀 Installation
+
+#🚀 Installation
 1. Clone the repository
+```text
 git clone <your-github-repository-url>
+```
 2. Open the project
+```text   
 cd airbnb-clone
+```
 3. Install dependencies
+```text
 npm install
+```
 4. Start the development server
+```text
 npm run dev
+```
 
 The application normally runs at:
-
+```text
 http://localhost:5173/
-📦 Production Build
+```
+#📦 Production Build
 
 Create a production build:
-
+```text
 npm run build
-
+```
 Preview the production build:
-
+```text
 npm run preview
-🌍 Deployment
+```
+#🌍 Deployment
 
 The project is configured for GitHub Pages deployment.
 
 The application uses:
-
+```text
 BrowserRouter
-
+```
 with:
-
+```text
 basename={import.meta.env.BASE_URL}
-
+```
 This allows the application to work correctly when deployed under the repository path.
 
 Live project:
-
+```text
 https://subhaproj.github.io/airbnb-clone/
-💾 Data Storage
+```
+#💾 Data Storage
 
 This project currently uses localStorage instead of a backend database.
 
@@ -542,7 +562,8 @@ MySQL
 Firebase Authentication
 Real booking API
 Payment gateway
-🔒 Protected User Actions
+
+#🔒 Protected User Actions
 
 The application protects important user actions.
 
@@ -559,13 +580,14 @@ Instead, the user is prompted to log in.
 Logged-in user
 
 A logged-in user can:
-
+```text
 Favorite
 Wishlist
 Book
 View Trips
 Logout
-📱 Responsive Design
+```
+#📱 Responsive Design
 
 The application supports:
 
@@ -584,7 +606,8 @@ Responsive navigation
 Responsive authentication pages
 Responsive listing details
 Responsive booking interface
-🎨 UI Design
+
+#🎨 UI Design
 
 The project uses an Airbnb-inspired modern UI.
 
@@ -602,7 +625,8 @@ Dropdown menus
 Responsive layouts
 Custom animated logo
 Modern transparent authentication pages
-♿ Accessibility
+
+#♿ Accessibility
 
 Accessibility improvements include:
 
@@ -615,11 +639,16 @@ Proper input types
 Focus-friendly navigation
 
 Examples:
-
+```text
 aria-label="Search"
+```
+```text
 aria-label="Open profile menu"
+```
+```text
 aria-label="Choose language and currency"
-⚡ Frontend Best Practices
+```
+#⚡ Frontend Best Practices
 
 The project follows several frontend development best practices.
 
@@ -634,10 +663,11 @@ Signup validation
 Booking validation
 Empty search results
 Protected action messages
+
 2. Small and Focused Components
 
 The UI is divided into reusable components such as:
-
+```text
 Navbar
 CategoryBar
 PropertyCard
@@ -645,7 +675,7 @@ GuestSelector
 WishlistCard
 Footer
 AnimatedLogo
-
+```
 Each component has a focused responsibility.
 
 3. State Management
@@ -653,30 +683,31 @@ Each component has a focused responsibility.
 React Context API is used for shared state.
 
 Examples:
-
+```text
 AuthContext
 SearchContext
 CategoryContext
 FavoriteContext
 WishlistContext
 TripContext
-
+```
 Local state is used for component-specific UI such as:
-
+```text
 Dropdowns
 Menus
 Guest selector
 Password visibility
+```
 4. Performance
 
 The project avoids unnecessary global state and keeps state close to the components that need it.
 
 Filtering is performed from the property dataset based on:
-
+```text
 Category
 Search
 Guest capacity
-
+```
 Future optimization can include:
 
 React.memo
@@ -684,6 +715,7 @@ useMemo
 useCallback
 Lazy loading
 Route-level code splitting
+
 5. Consistent Styling
 
 Tailwind CSS is used throughout the application.
@@ -696,6 +728,7 @@ Typography
 Responsive breakpoints
 Button styles
 Colors
+
 6. Component Lifecycle
 
 useEffect cleanup is used where event listeners are registered.
@@ -711,12 +744,13 @@ Accessible buttons
 ARIA labels
 Keyboard-friendly forms
 Appropriate input types
+
 8. Routing
 
 React Router is used for SPA navigation.
 
 Current routes include:
-
+```text
 /
 /explore
 /listing/:id
@@ -726,6 +760,7 @@ Current routes include:
 /trips
 /wishlists
 /help
+```
 9. Asset Loading
 
 Property images are loaded from the property data and displayed through reusable property cards.
@@ -736,6 +771,7 @@ Lazy loading images
 Lazy loading routes
 Code splitting
 Optimized image formats
+
 10. Testing & Debugging
 
 Development and debugging are performed using:
@@ -748,9 +784,10 @@ Console debugging
 GitHub Actions build checks
 
 Production builds are tested using:
-
+```text
 npm run build
-🧑‍💻 Development Concepts Demonstrated
+```
+#🧑‍💻 Development Concepts Demonstrated
 
 This project demonstrates:
 
@@ -777,7 +814,8 @@ Search functionality
 Category filtering
 Guest filtering
 Toast notifications
-🔮 Future Improvements
+
+#🔮 Future Improvements
 
 Possible future improvements include:
 
@@ -804,7 +842,8 @@ Route lazy loading
 Image lazy loading
 Error Boundary implementation
 Better loading states
-⚠️ Current Limitations
+
+#⚠️ Current Limitations
 
 This project is currently a front-end application.
 
@@ -819,14 +858,15 @@ Multiple users cannot share synchronized booking data
 Property availability is not controlled by a backend
 Images are sample/external images
 The language and currency menu is currently UI-only
-🔐 Security Note
+
+#🔐 Security Note
 
 This project is intended for educational purposes.
 
 Passwords and user information are stored using browser localStorage and should not be considered secure authentication for a production application.
 
 A production version should use:
-
+```text
 Backend Authentication
         ↓
 Secure Password Hashing
@@ -834,29 +874,33 @@ Secure Password Hashing
 Database
         ↓
 Session / Token Authentication
-🧪 Development Commands
+```
+#🧪 Development Commands
 
 Install dependencies:
-
+```text
 npm install
-
+```
 Start development server:
-
+```text
 npm run dev
-
+```
 Build production version:
-
+```text
 npm run build
-
+```
 Preview production build:
-
+```text
 npm run preview
-🌐 Live Demo
+```
+#🌐 Live Demo
+```text
 https://subhaproj.github.io/airbnb-clone/
-👩‍💻 Author
+```
+#👩‍💻 Author
 Subhashree V
 
-BCA Graduate | Aspiring Software Developer & UI/UX Designer
+BCA Graduate | Aspiring WEB & Software Developer and UI/UX Designer
 
 This project demonstrates practical experience with:
 
@@ -871,7 +915,9 @@ Context API
 Local Storage
 Responsive UI/UX
 Frontend application architecture
-⭐ Project Highlights
+
+#⭐ Project Highlights
+```text
 React
    +
 Vite
@@ -907,10 +953,11 @@ Trips
 Pricing Calculation
    +
 Toast Notifications
+```
 
 Built as a practical front-end project to demonstrate modern React development, state management, responsive UI/UX implementation, and real-world application workflows.
 
-⚠️ Disclaimer
+#⚠️ Disclaimer
 
 This is an Airbnb-inspired educational clone created for learning and portfolio purposes.
 
