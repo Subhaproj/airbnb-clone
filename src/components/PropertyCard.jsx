@@ -99,21 +99,41 @@ function PropertyCard({ property }) {
 
   const handleFavorite = (e) => {
 
-    e.stopPropagation();
+  e.stopPropagation();
 
-    const success =
-      toggleFavorite(property);
+  // Check whether it is already a favorite
+  const wasFavorite = favorites.some(
+    (item) => item.id === property.id
+  );
 
+  const success = toggleFavorite(property);
 
-    if (!success) {
+  // User is not logged in
+  if (!success) {
 
-      toast.error(
-        "Please log in to save properties to your Favorites."
-      );
+    toast.error(
+      "Please log in to save properties to your Favorites."
+    );
 
-    }
+    return;
+  }
 
-  };
+  // Logged-in user
+  if (wasFavorite) {
+
+    toast.success(
+      "Removed from favorites"
+    );
+
+  } else {
+
+    toast.success(
+      "Added to favorites ⭐"
+    );
+
+  }
+
+};
 
 
 
