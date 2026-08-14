@@ -675,7 +675,7 @@ Property images are sourced from external image services and are used as sample 
 
 **Subhashree V**
 
-BCA Graduate | Aspiring Software Developer & UI/UX Designer
+BCA Graduate | Aspiring Web Developer, Software Developer & UI/UX Designer
 
 ### Skills demonstrated in this project
 
