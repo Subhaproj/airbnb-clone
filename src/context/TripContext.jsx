@@ -164,7 +164,9 @@ export function TripProvider({ children }) {
       guestEmail: currentUser.email,
 
       guestName:
-        currentUser.name || ""
+  property.bookingFor === "self"
+    ? currentUser.name || ""
+    : property.guestName || ""
 
     };
 
